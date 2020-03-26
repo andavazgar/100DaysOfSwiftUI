@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  Unit Converter
+//  UnitConverter
 //
 //  Created by Andres Vazquez on 2020-03-25.
 //  Copyright © 2020 Andavazgar. All rights reserved.
@@ -10,7 +10,7 @@ import SwiftUI
 
 
 struct ContentView: View {
-    @State var selectedCategoryIndex = 0
+    @State private var selectedCategoryIndex = 0
     @State private var inputValue = ""
     @State private var inputUnitIndex = 0
     @State private var outputUnitIndex = 0
@@ -27,18 +27,33 @@ struct ContentView: View {
         return units[outputUnitIndex]
     }
 
-    private var result: Double {
-        let value = Double(inputValue) ?? 0
-        let inputMeasurement = Measurement(value: value, unit: inputUnit)
-
-        return inputMeasurement.converted(to: outputUnit).value
+    private var result: String {
+        var result = ""
+        if let value = Double(inputValue) {
+            let inputMeasurement = Measurement(value: value, unit: inputUnit)
+            let conversionResult = inputMeasurement.converted(to: outputUnit).value
+            let numFormatter = NumberFormatter()
+            numFormatter.maximumFractionDigits = 2
+            
+            result = numFormatter.string(from: NSNumber(value: conversionResult)) ?? ""
+        }
+        
+        return result
     }
     
     var body: some View {
         NavigationView {
             Form {
                 Section {
-                    Picker("Unit Type", selection: $selectedCategoryIndex) {
+                    Picker("Unit Type", selection: Binding(get: {
+                        self.selectedCategoryIndex
+                    }, set: { newCategory in
+                        self.selectedCategoryIndex = newCategory
+                        
+                        // Reset inputUnitIndex and outputUnitIndex to avoid index out of range crash
+                        self.inputUnitIndex = 0
+                        self.outputUnitIndex = 0
+                    })) {
                         ForEach(0 ..< ConversionUnit.allCases.count, id: \.self) {
                             Text("\(ConversionUnit.allCases[$0].rawValue)")
                         }
@@ -56,6 +71,7 @@ struct ContentView: View {
 
                     HStack {
                         TextField("", text: $inputValue)
+                            .keyboardType(.decimalPad)
                             .multilineTextAlignment(.trailing)
                         Text(inputUnit.symbol)
                     }
@@ -71,8 +87,19 @@ struct ContentView: View {
 
                     HStack {
                         Spacer()
-                        Text("\(result, specifier: "%g")")
+                        Text("\(result)")
                         Text(outputUnit.symbol)
+                    }
+                }
+                
+                if inputUnitIndex != outputUnitIndex {
+                    Section {
+                        Button("Switch: \(outputUnit.symbol) → \(inputUnit.symbol)") {
+                            let temp = self.inputUnitIndex
+                            self.inputUnitIndex = self.outputUnitIndex
+                            self.outputUnitIndex = temp
+                        }
+                        .frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
                     }
                 }
             }
@@ -84,6 +111,10 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        Group {
+            ContentView()
+            ContentView()
+                .colorScheme(.dark)
+        }
     }
 }

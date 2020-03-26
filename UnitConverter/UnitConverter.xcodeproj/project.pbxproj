@@ -42,7 +42,7 @@
 		53F7C507242BC0FB00613C57 = {
 			isa = PBXGroup;
 			children = (
-				53F7C512242BC0FB00613C57 /* Unit Converter */,
+				53F7C512242BC0FB00613C57 /* UnitConverter */,
 				53F7C511242BC0FB00613C57 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -55,7 +55,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		53F7C512242BC0FB00613C57 /* Unit Converter */ = {
+		53F7C512242BC0FB00613C57 /* UnitConverter */ = {
 			isa = PBXGroup;
 			children = (
 				53F7C513242BC0FB00613C57 /* AppDelegate.swift */,
@@ -67,7 +67,7 @@
 				53F7C521242BC10100613C57 /* Info.plist */,
 				53F7C51B242BC10100613C57 /* Preview Content */,
 			);
-			path = "Unit Converter";
+			path = UnitConverter;
 			sourceTree = "<group>";
 		};
 		53F7C51B242BC10100613C57 /* Preview Content */ = {
@@ -81,9 +81,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		53F7C50F242BC0FB00613C57 /* Unit Converter */ = {
+		53F7C50F242BC0FB00613C57 /* UnitConverter */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 53F7C524242BC10100613C57 /* Build configuration list for PBXNativeTarget "Unit Converter" */;
+			buildConfigurationList = 53F7C524242BC10100613C57 /* Build configuration list for PBXNativeTarget "UnitConverter" */;
 			buildPhases = (
 				53F7C50C242BC0FB00613C57 /* Sources */,
 				53F7C50D242BC0FB00613C57 /* Frameworks */,
@@ -93,7 +93,7 @@
 			);
 			dependencies = (
 			);
-			name = "Unit Converter";
+			name = UnitConverter;
 			productName = "Unit Converter";
 			productReference = 53F7C510242BC0FB00613C57 /* Unit Converter.app */;
 			productType = "com.apple.product-type.application";
@@ -113,7 +113,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 53F7C50B242BC0FB00613C57 /* Build configuration list for PBXProject "Unit Converter" */;
+			buildConfigurationList = 53F7C50B242BC0FB00613C57 /* Build configuration list for PBXProject "UnitConverter" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -126,7 +126,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				53F7C50F242BC0FB00613C57 /* Unit Converter */,
+				53F7C50F242BC0FB00613C57 /* UnitConverter */,
 			);
 		};
 /* End PBXProject section */
@@ -289,16 +289,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Unit Converter/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"UnitConverter/Preview Content\"";
 				DEVELOPMENT_TEAM = WSR8557KHP;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "Unit Converter/Info.plist";
+				INFOPLIST_FILE = UnitConverter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.andavazgar.Unit-Converter";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.andavazgar.UnitConverter;
+				PRODUCT_NAME = "Unit Converter";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -309,16 +309,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Unit Converter/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"UnitConverter/Preview Content\"";
 				DEVELOPMENT_TEAM = WSR8557KHP;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "Unit Converter/Info.plist";
+				INFOPLIST_FILE = UnitConverter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.andavazgar.Unit-Converter";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.andavazgar.UnitConverter;
+				PRODUCT_NAME = "Unit Converter";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -327,7 +327,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		53F7C50B242BC0FB00613C57 /* Build configuration list for PBXProject "Unit Converter" */ = {
+		53F7C50B242BC0FB00613C57 /* Build configuration list for PBXProject "UnitConverter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				53F7C522242BC10100613C57 /* Debug */,
@@ -336,7 +336,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		53F7C524242BC10100613C57 /* Build configuration list for PBXNativeTarget "Unit Converter" */ = {
+		53F7C524242BC10100613C57 /* Build configuration list for PBXNativeTarget "UnitConverter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				53F7C525242BC10100613C57 /* Debug */,

@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  Unit Converter
+//  UnitConverter
 //
 //  Created by Andres Vazquez on 2020-03-25.
 //  Copyright © 2020 Andavazgar. All rights reserved.

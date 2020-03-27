@@ -11,8 +11,9 @@
 
 ## Concepts learned through research
 
-* The `id` parameter of `ForEach` to identify each element in the collection uniquely
-* The `Binding` struct to provide custom setter and getter to Picker view
+- The `id` parameter of `ForEach` to identify each element in the collection uniquely
+- The `Binding` property wrapper to provide a custom setter and getter to the Picker view
+- `Button` view
 
 
 ## Screenshots

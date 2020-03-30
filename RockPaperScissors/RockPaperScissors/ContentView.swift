@@ -8,6 +8,14 @@
 
 import SwiftUI
 
+struct AlertItem: Identifiable {
+    enum AlertType {
+        case player, gameOver
+    }
+    
+    var id: AlertType
+}
+
 struct ContentView: View {
     let moves = ["✊🏻", "✋🏻", "✌🏻"]
     @State private var chosenMove = ""
@@ -16,9 +24,8 @@ struct ContentView: View {
     @State private var scoreChange = 0
     @State private var round = 1
     let numOfRounds = 10
-    @State private var gameOver = false
     
-    @State private var showAlert = false
+    @State private var showAlert: AlertItem?
     @State private var alertTitle = ""
     @State private var alertMessage = ""
     
@@ -68,88 +75,65 @@ struct ContentView: View {
             Spacer()
         }
         .onAppear(perform: decideMoveAndObjective)
-        .alert(isPresented: $showAlert) {
-            Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text("OK")) {
-                self.round += 1
-                self.score += self.scoreChange
-                
-                if self.gameOver == false {
-                    self.decideMoveAndObjective()
-                }
-            })
+        .alert(item: $showAlert) { alertToShow in
+            switch alertToShow.id {
+            case .player:
+                return Alert(title: Text(self.alertTitle), message: Text(self.alertMessage), dismissButton: .default(Text("OK")) {
+                    self.score += self.scoreChange
+
+                    if self.round < self.numOfRounds {
+                        self.round += 1
+                        self.decideMoveAndObjective()
+                    } else {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            self.showAlert = AlertItem(id: .gameOver)
+                        }
+                    }
+                })
+            case .gameOver:
+                return Alert(title: Text("End of game"), message: Text("Your final score is \(score)/\(numOfRounds)"), dismissButton: .default(Text("Play Again")) {
+                    self.restartGame()
+                })
+            }
         }
     }
     
     private func decideMoveAndObjective() {
-        if round > numOfRounds {
-            gameOver = true
-            alertTitle = "End of the game"
-            alertMessage = "Your final score is \(score)/\(numOfRounds)"
-            showAlert = true
-        } else {
-            chosenMove = moves.randomElement() ?? ""
-            shouldWin = Bool.random()
-        }
+        chosenMove = moves.randomElement() ?? ""
+        shouldWin = Bool.random()
     }
     
     private func evaluate(playerMove: String) {
-        switch chosenMove {
-        case "✊🏻":
-            if playerMove == "✊🏻" {
-                alertTitle = "Wrong"
-                alertMessage = "✊🏻 and ✊🏻 results in a draw, not a \(shouldWin ? "WIN" : "LOSE")."
+        if let position = moves.firstIndex(of: chosenMove) {
+            if shouldWin {
+                let correctMove = moves[(position + 1) % moves.count]
                 
-                scoreChange = -1
-            } else if (shouldWin && playerMove == "✋🏻") || (!shouldWin && playerMove == "✌🏻") {
-                alertTitle = "Correct"
-                alertMessage = shouldWin ? "✋🏻 beats ✊🏻" : "✊🏻 beats ✌🏻"
+                if correctMove == playerMove {
+                    alertTitle = "Correct"
+                    alertMessage = "\(correctMove) beats \(moves[position])"
+                    scoreChange = 1
+                } else {
+                    alertTitle = "Wrong"
+                    alertMessage = "You should have chosen \(moveName(for: correctMove)) (\(correctMove))"
+                    scoreChange = -1
+                }
                 
-                scoreChange = 1
             } else {
-                alertTitle = "Wrong"
-                alertMessage = shouldWin ? "You should have chosedn ✋🏻" : "You should have chosen ✌🏻"
+                let correctMove = moves[(position - 1 + moves.count) % moves.count]
                 
-                scoreChange = -1
+                if correctMove == playerMove {
+                    alertTitle = "Correct"
+                    alertMessage = "\(correctMove) loses to \(moves[position])"
+                    scoreChange = 1
+                } else {
+                    alertTitle = "Wrong"
+                    alertMessage = "You should have chosen \(moveName(for: correctMove)) (\(correctMove))"
+                    scoreChange = -1
+                }
             }
             
-        case "✋🏻":
-            if playerMove == "✋🏻" {
-                alertTitle = "Wrong"
-                alertMessage = "✋🏻 and ✋🏻 results in a draw, not a \(shouldWin ? "WIN" : "LOSE")."
-                
-                scoreChange = -1
-            } else if (shouldWin && playerMove == "✌🏻") || (!shouldWin && playerMove == "✊🏻") {
-                alertTitle = "Correct"
-                alertMessage = shouldWin ? "✌🏻 beats ✋🏻" : "✋🏻 beats ✊🏻"
-                
-                scoreChange = 1
-            } else {
-                alertTitle = "Wrong"
-                alertMessage = shouldWin ? "You should have chosedn ✌🏻" : "You should have chosen ✊🏻"
-                
-                scoreChange = -1
-            }
-        default:
-            // Scissors (✌🏻)
-            if playerMove == "✌🏻" {
-                alertTitle = "Wrong"
-                alertMessage = "✌🏻 and ✌🏻 results in a draw, not a \(shouldWin ? "WIN" : "LOSE")."
-                
-                scoreChange = -1
-            } else if (shouldWin && playerMove == "✊🏻") || (!shouldWin && playerMove == "✋🏻") {
-                alertTitle = "Correct"
-                alertMessage = shouldWin ? "✊🏻 beats ✌🏻" : "✌🏻 beats ✋🏻"
-                
-                scoreChange = 1
-            } else {
-                alertTitle = "Wrong"
-                alertMessage = shouldWin ? "You should have chosedn ✊🏻" : "You should have chosen ✋🏻"
-                
-                scoreChange = -1
-            }
+            showAlert = AlertItem(id: .player)
         }
-        
-        showAlert = true
     }
     
     private func moveName(for moveEmoji: String) -> String {
@@ -161,6 +145,12 @@ struct ContentView: View {
         default:
             return "Scissors"
         }
+    }
+    
+    private func restartGame() {
+        round = 1
+        score = 0
+        decideMoveAndObjective()
     }
 }
 

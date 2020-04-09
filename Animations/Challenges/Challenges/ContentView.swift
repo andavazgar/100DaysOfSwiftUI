@@ -12,10 +12,9 @@ struct ContentView: View {
     @State private var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Monaco", "Nigeria", "Poland", "Russia", "Spain", "UK", "US"].shuffled()
     @State private var correctAnswer = Int.random(in: 0...2)
     
-    @State private var showingScoreAlert = false
-    @State private var scoreAlertTitle = ""
-    @State private var scoreAlertMessage = ""
     @State private var score = 0
+    @State private var chosenFlag: Int?
+    @State private var wrongFlagMessage = ""
     @State private var flagAnimations = [
         0: ["rotation": 0.0, "opacity": 1.0],
         1: ["rotation": 0.0, "opacity": 1.0],
@@ -54,44 +53,58 @@ struct ContentView: View {
                     }
                 }
                 
-                Text("Score: \(score)")
-                    .foregroundColor(.white)
-                    .font(.headline)
-                    .fontWeight(.bold)
+                HStack {
+                    Text("Score:")
+                    
+                    if chosenFlag != nil {
+                        Text("\(score)")
+                            .foregroundColor(chosenFlag == correctAnswer ? Color.green : Color.red)
+                    } else {
+                        Text("\(score)")
+                    }
+                }
+                .foregroundColor(.white)
+                .font(.system(size: 22, weight: .bold))
+                .padding(.top, 50)
                 
+                if chosenFlag != nil {
+                    Text(wrongFlagMessage)
+                        .foregroundColor(.red)
+                        .font(.system(size: 20, weight: .bold))
+                    
+                    
+                    Button("Next Question") {
+                        self.askNextQuestion()
+                    }
+                }
                 Spacer()
             }
-        }
-        .alert(isPresented: $showingScoreAlert) {
-            Alert(title: Text(scoreAlertTitle), message: Text(scoreAlertMessage), dismissButton: .default(Text("Continue")) {
-                self.askQuestion()
-            })
         }
     }
     
     func flagTapped(_ number: Int, name: String) {
-        if number == correctAnswer {
-            score += 1
-            scoreAlertTitle = "Correct"
-            scoreAlertMessage = "Your score is \(score)"
-        } else {
-            score -= 1
-            scoreAlertTitle = "Wrong"
-            scoreAlertMessage = "That's the flag of \(name)"
-        }
+        chosenFlag = number
         
         withAnimation {
             for index in 0 ..< flagAnimations.count {
-                if index == number && number == correctAnswer {
-                    let rotationAmount = flagAnimations[index]?["rotation"] ?? 0
-                    flagAnimations[index]?["rotation"] = rotationAmount + 360
-                } else {
+                if index == chosenFlag {
+                    if chosenFlag == correctAnswer {
+                        score += 1
+                        
+                        let rotationAmount = flagAnimations[index]?["rotation"] ?? 0
+                        flagAnimations[index]?["rotation"] = rotationAmount + 360
+                    } else {
+                        score -= 1
+                        
+                        wrongFlagMessage = "That's the flag of \(name)"
+                    }
+                }
+                
+                if index != correctAnswer {
                     flagAnimations[index]?["opacity"] = 0.25
                 }
             }
         }
-        
-        showingScoreAlert = true
     }
     
     func askQuestion() {
@@ -99,11 +112,24 @@ struct ContentView: View {
         correctAnswer = Int.random(in: 0...2)
     }
     
+    func askNextQuestion() {
+        chosenFlag = nil
+        wrongFlagMessage = ""
+        resetFlagAnimations()
+        askQuestion()
+    }
+    
     func getFlagOverlay(_ number: Int) -> some View {
-        if showingScoreAlert && number != correctAnswer {
+        if let chosenFlag = chosenFlag, number == chosenFlag && number != correctAnswer {
             return Color.red.clipShape(Capsule()).opacity(0.5)
         } else {
             return Color.clear.clipShape(Capsule()).opacity(1)
+        }
+    }
+    
+    func resetFlagAnimations() {
+        for index in 0 ..< flagAnimations.count {
+            flagAnimations[index]?["opacity"] = 1
         }
     }
 }

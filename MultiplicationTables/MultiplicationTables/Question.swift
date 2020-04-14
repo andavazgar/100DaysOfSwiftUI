@@ -9,12 +9,17 @@
 
 
 struct Question {
-    var firstNumber: Int
-    var secondNumber: Int
-    var result: Int {
-        firstNumber * secondNumber
-    }
-    var text: String {
-        "\(firstNumber) x \(secondNumber) = "
+    var text: String
+    var result: String
+    var paddingAmount = 0
+    
+    init(highestTable: Int) {
+        let firstNumber = Int.random(in: 1...highestTable)
+        let secondNumber = Int.random(in: 1...12)
+        
+        text = "\(firstNumber) x \(secondNumber) = "
+        result = "\(firstNumber * secondNumber)"
+        
+        paddingAmount = 10 - text.count
     }
 }

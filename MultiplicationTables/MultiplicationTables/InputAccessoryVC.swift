@@ -12,13 +12,11 @@ extension Notification.Name {
     static let submitAnswer = Notification.Name("submitAnswer")
 }
 
-class InputAccessoryVC: UIViewController {
+class TextfieldWithAccessoryVC: UIViewController {
+    let textfield = UITextField()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let textfield = UITextField()
-        textfield.keyboardType = .numberPad
         
         let toolBar = UIToolbar(frame: .zero)
         let doneButton = UIBarButtonItem(title: "Submit", style: .done, target: self, action: #selector(sendAnswer))

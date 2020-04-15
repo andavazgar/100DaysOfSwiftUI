@@ -41,10 +41,10 @@ struct ContentView: View {
                 }
             } else {
                 Group {
-                    ZStack {
+                    VStack {
                         ForEach(0..<questions.count, id: \.self) { index in
                             QuestionRow(question: self.questions[index], position: self.position(for: index))
-                                .offset(x: -10, y: CGFloat(index) * 75 - CGFloat(self.currentQuestion) * 75)
+//                                .offset(x: -10, y: CGFloat(index) * 75 - CGFloat(self.currentQuestion) * 75)
                         }
                     }
                     
@@ -109,23 +109,11 @@ struct QuestionRow: View {
             Text(question.text)
                 .fontWeight(.bold)
             TextfieldWithAccessoryView(text: $userAnswer, keyboardType: .numberPad)
-                .multilineTextAlignment(.center)
-                .frame(maxWidth: 75)
-                .padding(5)
+                .frame(maxWidth: 75, maxHeight: 50)
                 .background(positionColor)
                 .foregroundColor(.white)
-//                .clipShape(RoundedRectangle(cornerRadius: 10))
-//                .disabled(position == .current ? false : true)
-            
-//            TextField("?", text: self.$userAnswer)
-//                .keyboardType(.numberPad)
-//                .multilineTextAlignment(.center)
-//                .frame(maxWidth: 75)
-//                .padding(5)
-//                .background(positionColor)
-//                .foregroundColor(.white)
-//                .clipShape(RoundedRectangle(cornerRadius: 10))
-//                .disabled(position == .current ? false : true)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .disabled(position == .current ? false : true)
         }
         .font(.system(size: 28, weight: .bold, design: .monospaced))
     }

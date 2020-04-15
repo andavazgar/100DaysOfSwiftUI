@@ -13,15 +13,10 @@ struct TextfieldWithAccessoryView: UIViewRepresentable {
     var keyboardType: UIKeyboardType
     
     func makeUIView(context: Context) -> UITextField {
-        let textfield = UITextField()
+        let textfield = UITextfieldWithAccessoryView()
         textfield.keyboardType = keyboardType
-        
-        let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: textfield.frame.size.width, height: 44))
-        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(textfield.doneButtonTapped(button:)))
-        toolBar.items = [doneButton]
-        toolBar.setItems([doneButton], animated: true)
-        
-        textfield.inputAccessoryView = toolBar
+        textfield.font = UIFont.monospacedSystemFont(ofSize: 28, weight: .bold)
+        textfield.textAlignment = .center
         return textfield
     }
     
@@ -30,9 +25,39 @@ struct TextfieldWithAccessoryView: UIViewRepresentable {
     }
 }
 
-extension  UITextField{
-    @objc func doneButtonTapped(button:UIBarButtonItem) -> Void {
-       self.resignFirstResponder()
-    }
 
+class UITextfieldWithAccessoryView: UITextField {
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: 50))
+        let doneButton = UIBarButtonItem(title: "Submit", style: .done, target: self, action: #selector(sendAnswer))
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolBar.items = [flexSpace, doneButton]
+        
+        self.inputAccessoryView = toolBar
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc private func sendAnswer() {
+        NotificationCenter.default.post(name: .submitAnswer, object: nil)
+    }
+}
+
+extension Notification.Name {
+    static let submitAnswer = Notification.Name("submitAnswer")
+}
+
+
+
+struct TextfieldWithAccessoryView_Previews: PreviewProvider {
+    @State private static var testy = ""
+    
+    static var previews: some View {
+        TextfieldWithAccessoryView(text: $testy, keyboardType: .numberPad)
+    }
 }

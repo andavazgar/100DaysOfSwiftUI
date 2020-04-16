@@ -41,10 +41,10 @@ struct ContentView: View {
                 }
             } else {
                 Group {
-                    VStack {
+                    ZStack {
                         ForEach(0..<questions.count, id: \.self) { index in
                             QuestionRow(question: self.questions[index], position: self.position(for: index))
-//                                .offset(x: -10, y: CGFloat(index) * 75 - CGFloat(self.currentQuestion) * 75)
+                                .offset(x: -10, y: CGFloat(index) * 75 - CGFloat(self.currentQuestion) * 75)
                         }
                     }
                     
@@ -52,6 +52,11 @@ struct ContentView: View {
                 }
                 .navigationBarTitle("Math x Fun")
                 .onAppear(perform: createQuestions)
+                .onReceive(NotificationCenter.default.publisher(for: .submitAnswer)) { _ in
+                    withAnimation {
+                        self.currentQuestion += 1
+                    }
+                }
             }
         }
     }

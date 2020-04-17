@@ -9,35 +9,51 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var isFormVisible = false
-    @State private var tables = 5
+    @State private var isFormVisible = true
+    @State private var tables = 1
     @State private var numQuestionsIndex = 0
     @State private var numQuestions = ["5", "10", "20", "All"]
     @State private var questions = [Question]()
     @State private var currentQuestion = 0
+    private var score: Int {
+        return questions.filter { $0.result == $0.userAnswer }.count
+    }
+    private let appTitle = "Math × Fun"
     
     var body: some View {
         NavigationView {
             if isFormVisible {
                 Group {
                     Form {
-                        Stepper("Tables to practice: \(tables)", value: $tables, in: 1...12)
+                        HStack {
+                            Text("Practice tables up to:")
+                            Stepper(value: $tables, in: 1...12) {
+                                Text("\(tables)")
+                                    .fontWeight(.bold)
+                            }
+                        }
+                        .padding(.vertical, 10)
                         
                         VStack(alignment: .leading) {
-                            Text("Numbet of Questions")
+                            Text("Numbet of questions:")
                             Picker("", selection: $numQuestionsIndex) {
-                                ForEach(numQuestions, id: \.self) {
-                                    Text($0)
+                                ForEach(0..<numQuestions.count, id: \.self) {
+                                    Text(self.numQuestions[$0])
                                 }
                             }
                             .pickerStyle(SegmentedPickerStyle())
                         }
+                        .padding(.vertical, 10)
                         
                         Button("Start!") {
-                            self.createQuestions()
+                            withAnimation {
+                                self.isFormVisible = false
+                            }
                         }
+                        .padding(.vertical, 10)
+                        .frame(maxWidth: .infinity)
                     }
-                    .navigationBarTitle("Math x Fun")
+                    .navigationBarTitle(appTitle)
                 }
             } else {
                 Group {
@@ -46,13 +62,31 @@ struct ContentView: View {
                             QuestionRow(question: self.questions[index], position: self.position(for: index))
                                 .offset(x: -10, y: CGFloat(index) * 75 - CGFloat(self.currentQuestion) * 75)
                         }
+                        
+                        GeometryReader { metrics in
+                            VStack {
+                                Color(.systemBackground)
+                                    .frame(height: metrics.size.height * 0.25)
+                                    .edgesIgnoringSafeArea(.all)
+                            }
+                            Spacer()
+                        }
+                        
+                        Text("Score: \(score)")
+                        .padding()
+                        .background(Capsule().fill(Color.primary.opacity(0.2)))
+                        .font(.system(size: 25, weight: .bold, design: .default))
+                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+                        .padding()
+                        .offset(x: 0, y: -75)
                     }
-                    
-                    Spacer()
                 }
-                .navigationBarTitle("Math x Fun")
+                .navigationBarTitle(appTitle)
                 .onAppear(perform: createQuestions)
-                .onReceive(NotificationCenter.default.publisher(for: .submitAnswer)) { _ in
+                .onReceive(NotificationCenter.default.publisher(for: .submitAnswer)) { notification in
+                    if let answer = notification.object as? String {
+                        self.questions[self.currentQuestion].userAnswer = answer
+                    }
                     withAnimation {
                         self.currentQuestion += 1
                     }
@@ -91,7 +125,7 @@ struct QuestionRow: View {
     var positionColor: Color {
         switch position {
         case .answered:
-            if question.result == userAnswer {
+            if question.result == question.userAnswer {
                 return Color.green.opacity(0.8)
             } else {
                 return Color.red.opacity(0.8)
@@ -100,10 +134,9 @@ struct QuestionRow: View {
             return Color.blue.opacity(0.8)
             
         case .upcoming:
-            return Color.black.opacity(0.3)
+            return Color.primary.opacity(0.2)
         }
     }
-    @State private var userAnswer = ""
     
     var body: some View {
         HStack(spacing: 0) {
@@ -113,10 +146,10 @@ struct QuestionRow: View {
             
             Text(question.text)
                 .fontWeight(.bold)
-            TextfieldWithAccessoryView(text: $userAnswer, keyboardType: .numberPad)
-                .frame(maxWidth: 75, maxHeight: 50)
+            
+            TextfieldWithAccessoryView(placeholder: "?", keyboardType: .numberPad, position: position)
+                .frame(width: 75, height: 50)
                 .background(positionColor)
-                .foregroundColor(.white)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
                 .disabled(position == .current ? false : true)
         }
@@ -126,6 +159,9 @@ struct QuestionRow: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        Group {
+            ContentView()
+            ContentView().colorScheme(.dark)
+        }
     }
 }

@@ -9,8 +9,9 @@
 import SwiftUI
 
 struct TextfieldWithAccessoryView: UIViewRepresentable {
-    @Binding var text: String
+    var placeholder: String
     var keyboardType: UIKeyboardType
+    var position: Position
     
     func makeCoordinator() -> Coordinator {
         return Coordinator()
@@ -18,6 +19,7 @@ struct TextfieldWithAccessoryView: UIViewRepresentable {
     
     func makeUIView(context: Context) -> UITextField {
         let textfield = UITextfieldWithAccessoryView()
+        textfield.placeholder = placeholder
         textfield.keyboardType = keyboardType
         textfield.font = UIFont.monospacedSystemFont(ofSize: 28, weight: .bold)
         textfield.textAlignment = .center
@@ -26,18 +28,27 @@ struct TextfieldWithAccessoryView: UIViewRepresentable {
     }
 
     func updateUIView(_ uiView: UITextField, context: Context) {
-        uiView.text = text
+        if position == .current {
+            uiView.becomeFirstResponder()
+        }
     }
     
     class Coordinator: NSObject, UITextFieldDelegate {
         func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-            if let char = string.cString(using: String.Encoding.utf8), strcmp(char, "\\b") == -92 {
-                return true
-            } else if let textLength = textField.text?.count, textLength < 3 {
-                return true
-            } else {
-                return false
+            if let char = string.cString(using: String.Encoding.utf8) {
+                let characterCode = strcmp(char, "\\b")
+                
+                // Backspace
+                if characterCode == -92 {
+                    return true
+                } else if string == "\n" && textField.text?.isEmpty == false {
+                    NotificationCenter.default.post(name: .submitAnswer, object: textField.text)
+                } else if let textLength = textField.text?.count, textLength < 3 {
+                    return Int(string) != nil
+                }
             }
+            
+            return false
         }
     }
 }
@@ -70,8 +81,7 @@ class UITextfieldWithAccessoryView: UITextField {
 
     @objc private func sendAnswer() {
         if self.text?.isEmpty == false {
-            print("sending...")
-            NotificationCenter.default.post(name: .submitAnswer, object: nil)
+            NotificationCenter.default.post(name: .submitAnswer, object: self.text)
         }
     }
 }
@@ -83,9 +93,7 @@ extension Notification.Name {
 
 
 struct TextfieldWithAccessoryView_Previews: PreviewProvider {
-    @State private static var testy = ""
-
     static var previews: some View {
-        TextfieldWithAccessoryView(text: $testy, keyboardType: .numberPad)
+        TextfieldWithAccessoryView(placeholder: "?", keyboardType: .numberPad, position: .current)
     }
 }

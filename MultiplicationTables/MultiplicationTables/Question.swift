@@ -11,6 +11,7 @@
 struct Question {
     var text: String
     var result: String
+    var userAnswer = ""
     var paddingAmount = 0
     
     init(highestTable: Int) {

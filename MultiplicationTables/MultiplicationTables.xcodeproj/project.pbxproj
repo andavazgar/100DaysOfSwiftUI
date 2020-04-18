@@ -16,6 +16,8 @@
 		538DF9CF244413F200B83AF1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 538DF9CE244413F200B83AF1 /* Preview Assets.xcassets */; };
 		538DF9D2244413F200B83AF1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 538DF9D0244413F200B83AF1 /* LaunchScreen.storyboard */; };
 		538DF9DA2444164D00B83AF1 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538DF9D92444164D00B83AF1 /* Question.swift */; };
+		53984D79244A4275004D656C /* UITextfieldWithAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53984D78244A4275004D656C /* UITextfieldWithAccessoryView.swift */; };
+		53984D7B244A5925004D656C /* GameConfigurationModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53984D7A244A5925004D656C /* GameConfigurationModal.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		538DF9D1244413F200B83AF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		538DF9D3244413F200B83AF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		538DF9D92444164D00B83AF1 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		53984D78244A4275004D656C /* UITextfieldWithAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextfieldWithAccessoryView.swift; sourceTree = "<group>"; };
+		53984D7A244A5925004D656C /* GameConfigurationModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameConfigurationModal.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +69,9 @@
 				538DF9C5244413F000B83AF1 /* AppDelegate.swift */,
 				538DF9C7244413F000B83AF1 /* SceneDelegate.swift */,
 				538DF9C9244413F000B83AF1 /* ContentView.swift */,
+				53984D7A244A5925004D656C /* GameConfigurationModal.swift */,
 				530A11A724455812009870B4 /* TextfieldWithAccessoryView.swift */,
+				53984D78244A4275004D656C /* UITextfieldWithAccessoryView.swift */,
 				530A11A3244533D5009870B4 /* Position.swift */,
 				538DF9D92444164D00B83AF1 /* Question.swift */,
 				538DF9CB244413F200B83AF1 /* Assets.xcassets */,
@@ -157,10 +163,12 @@
 			files = (
 				538DF9C6244413F000B83AF1 /* AppDelegate.swift in Sources */,
 				538DF9DA2444164D00B83AF1 /* Question.swift in Sources */,
+				53984D79244A4275004D656C /* UITextfieldWithAccessoryView.swift in Sources */,
 				538DF9C8244413F000B83AF1 /* SceneDelegate.swift in Sources */,
 				530A11A4244533D5009870B4 /* Position.swift in Sources */,
 				538DF9CA244413F000B83AF1 /* ContentView.swift in Sources */,
 				530A11A824455812009870B4 /* TextfieldWithAccessoryView.swift in Sources */,
+				53984D7B244A5925004D656C /* GameConfigurationModal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

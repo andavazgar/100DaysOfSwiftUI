@@ -9,102 +9,63 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var isFormVisible = true
-    @State private var tables = 1
-    @State private var numQuestionsIndex = 0
-    @State private var numQuestions = ["5", "10", "20", "All"]
+    @State private var isFormVisible = false
     @State private var questions = [Question]()
     @State private var currentQuestion = 0
     private var score: Int {
         return questions.filter { $0.result == $0.userAnswer }.count
     }
-    private let appTitle = "Math × Fun"
+    
+    init(questions: [Question] = [Question]()) {
+        self._questions = State(initialValue: questions)
+    }
     
     var body: some View {
         NavigationView {
-            if isFormVisible {
-                Group {
-                    Form {
-                        HStack {
-                            Text("Practice tables up to:")
-                            Stepper(value: $tables, in: 1...12) {
-                                Text("\(tables)")
-                                    .fontWeight(.bold)
-                            }
-                        }
-                        .padding(.vertical, 10)
-                        
-                        VStack(alignment: .leading) {
-                            Text("Numbet of questions:")
-                            Picker("", selection: $numQuestionsIndex) {
-                                ForEach(0..<numQuestions.count, id: \.self) {
-                                    Text(self.numQuestions[$0])
-                                }
-                            }
-                            .pickerStyle(SegmentedPickerStyle())
-                        }
-                        .padding(.vertical, 10)
-                        
-                        Button("Start!") {
-                            withAnimation {
-                                self.isFormVisible = false
-                            }
-                        }
-                        .padding(.vertical, 10)
-                        .frame(maxWidth: .infinity)
-                    }
-                    .navigationBarTitle(appTitle)
+            ZStack {
+                ForEach(0..<questions.count, id: \.self) { index in
+                    QuestionRow(question: self.questions[index], position: self.position(for: index))
+                        .offset(x: -10, y: CGFloat(index) * 75 - CGFloat(self.currentQuestion) * 75)
                 }
-            } else {
-                Group {
-                    ZStack {
-                        ForEach(0..<questions.count, id: \.self) { index in
-                            QuestionRow(question: self.questions[index], position: self.position(for: index))
-                                .offset(x: -10, y: CGFloat(index) * 75 - CGFloat(self.currentQuestion) * 75)
-                        }
-                        
-                        GeometryReader { metrics in
-                            VStack {
-                                Color(.systemBackground)
-                                    .frame(height: metrics.size.height * 0.25)
-                                    .edgesIgnoringSafeArea(.all)
-                            }
-                            Spacer()
-                        }
-                        
-                        Text("Score: \(score)")
-                        .padding()
-                        .background(Capsule().fill(Color.primary.opacity(0.2)))
-                        .font(.system(size: 25, weight: .bold, design: .default))
-                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
-                        .padding()
-                        .offset(x: 0, y: -75)
+                
+                GeometryReader { metrics in
+                    VStack {
+                        Color(.systemBackground)
+                            .frame(height: metrics.size.height * 0.25)
+                            .edgesIgnoringSafeArea(.all)
                     }
+                    Spacer()
                 }
-                .navigationBarTitle(appTitle)
-                .onAppear(perform: createQuestions)
-                .onReceive(NotificationCenter.default.publisher(for: .submitAnswer)) { notification in
-                    if let answer = notification.object as? String {
-                        self.questions[self.currentQuestion].userAnswer = answer
-                    }
-                    withAnimation {
-                        self.currentQuestion += 1
-                    }
+                
+                Text("Score: \(score)")
+                    .padding()
+                    .background(Capsule().fill(Color.primary.opacity(0.2)))
+                    .font(.system(size: 25, weight: .bold, design: .default))
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+                    .padding()
+                    .offset(x: 0, y: -75)
+            }
+            .navigationBarTitle("Math × Fun")
+            .onAppear { self.isFormVisible = true }
+            .sheet(isPresented: $isFormVisible, onDismiss: {
+                if self.questions.isEmpty {
+                    self.isFormVisible = true
+                }
+            }, content: {
+                GameConfigurationModal(questions: self.$questions, isFormVisible: self.$isFormVisible)
+            })
+            .onReceive(NotificationCenter.default.publisher(for: .submitAnswer)) { notification in
+                if let answer = notification.object as? String {
+                    self.questions[self.currentQuestion].userAnswer = answer
+                }
+                withAnimation {
+                    self.currentQuestion += 1
+                }
+                
+                if self.currentQuestion > self.questions.count {
+                    print("The gane is done")
                 }
             }
-        }
-    }
-    
-    private func createQuestions() {
-        let quantityOfQuestions: Int
-        
-        if numQuestions[numQuestionsIndex] == "All" {
-            quantityOfQuestions = tables * 12
-        } else {
-            quantityOfQuestions = Int(numQuestions[numQuestionsIndex]) ?? 10
-        }
-        for _ in 1...quantityOfQuestions {
-            questions.append(Question(highestTable: tables))
         }
     }
     
@@ -158,10 +119,18 @@ struct QuestionRow: View {
 }
 
 struct ContentView_Previews: PreviewProvider {
+    static var questions: [Question] = {
+        var questions = [Question]()
+        for _ in 0..<10 {
+            questions.append(Question(highestTable: 12))
+        }
+        return questions
+    }()
+    
     static var previews: some View {
         Group {
-            ContentView()
-            ContentView().colorScheme(.dark)
+            ContentView(questions: questions)
+            ContentView(questions: questions).colorScheme(.dark)
         }
     }
 }

@@ -26,4 +26,4 @@
 
 ## Screenshots
 
-![Screenshots](Demo/Gifs/Combined.gif)
+![Screenshots](Screenshots/Combined.png)

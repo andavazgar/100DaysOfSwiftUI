@@ -13,7 +13,7 @@ Structure of SwiftUI projects
 
 ## Concepts learned through research:
 
-- `HStack`, and `Spacer` structs
+- `HStack`, and `Spacer` views
 
 
 

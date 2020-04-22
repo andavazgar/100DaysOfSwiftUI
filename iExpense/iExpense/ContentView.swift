@@ -8,80 +8,67 @@
 
 import SwiftUI
 
-class User: ObservableObject {
-    @Published var firstName: String
-    @Published var lastName: String
+struct ExpenseItem: Identifiable, Codable {
+    var id = UUID()
+    var name: String
+    var type: String
+    let amount: Int
+}
+
+class Expenses: ObservableObject {
+    @Published var items = [ExpenseItem]() {
+        didSet {
+            let encoder = JSONEncoder()
+            
+            if let encoded = try? encoder.encode(items) {
+                UserDefaults.standard.set(encoded, forKey: "Items")
+            }
+        }
+    }
     
     init() {
-        firstName = "Bilbo"
-        lastName = "Baggins"
+        if let items = UserDefaults.standard.data(forKey: "Items") {
+            let decoder = JSONDecoder()
+            
+            if let decoded = try? decoder.decode([ExpenseItem].self, from: items) {
+                self.items = decoded
+                return
+            }
+            
+            self.items = []
+        }
     }
 }
 
 struct ContentView: View {
-    @ObservedObject var user = User()
-    @State private var numbers = [Int]()
-    @State private var currentNumber = 1
-    @State private var isShowingSheet = false
-    @State private var taps = UserDefaults.standard.integer(forKey: "Taps")
+    @ObservedObject var expenses = Expenses()
+    @State private var showingAddExpense = false
     
     var body: some View {
         NavigationView {
-            VStack {
-                Text("Name: \(user.firstName) \(user.lastName)")
-                
-                TextField("First Name", text: $user.firstName)
-                TextField("Last Name", text: $user.lastName)
-                
-                List {
-                    ForEach(numbers, id: \.self) {
-                        Text("\($0)")
-                    }
-                    .onDelete(perform: removeRows)
+            List {
+                ForEach(expenses.items) {
+                    Text("\($0.name)")
                 }
-                
-                Button("Add number") {
-                    self.numbers.append(self.currentNumber)
-                    self.currentNumber += 1
-                }
-                
-                Button("Show sheet") {
-                    self.isShowingSheet.toggle()
-                }
-                .padding(.vertical, 40)
-                
-                Button("Remember taps: \(taps)") {
-                    self.taps += 1
-                    UserDefaults.standard.set(self.taps, forKey: "Taps")
-                }
+                .onDelete(perform: removeItems)
             }
-            .navigationBarItems(leading: EditButton())
-            .sheet(isPresented: $isShowingSheet) {
-                SecondView()
+            .navigationBarTitle("iExpense")
+            .navigationBarItems(trailing: Button(action: {
+                self.showingAddExpense = true
+            }) {
+                Image(systemName: "plus")
+            })
+            .sheet(isPresented: $showingAddExpense) {
+                AddView(expenses: self.expenses)
             }
         }
     }
     
-    private func removeRows(at offsets: IndexSet) {
-        numbers.remove(atOffsets: offsets)
+    private func removeItems(at offsets: IndexSet) {
+        expenses.items.remove(atOffsets: offsets)
     }
 }
 
-struct SecondView: View {
-    @Environment(\.presentationMode) var presentationMode
-    
-    var body: some View {
-        ZStack {
-            Color.blue
-                .edgesIgnoringSafeArea(.all)
-            
-            Button("Dismiss sheet") {
-                self.presentationMode.wrappedValue.dismiss()
-            }
-            .foregroundColor(.white)
-        }
-    }
-}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

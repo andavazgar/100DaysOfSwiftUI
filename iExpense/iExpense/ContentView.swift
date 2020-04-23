@@ -34,9 +34,9 @@ class Expenses: ObservableObject {
                 self.items = decoded
                 return
             }
-            
-            self.items = []
         }
+        
+        self.items = []
     }
 }
 
@@ -47,8 +47,16 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(expenses.items) {
-                    Text("\($0.name)")
+                ForEach(expenses.items) { item in
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text("\(item.name)")
+                                .font(.headline)
+                            Text(item.type)
+                        }
+                        Spacer()
+                        Text("$\(item.amount)")
+                    }
                 }
                 .onDelete(perform: removeItems)
             }

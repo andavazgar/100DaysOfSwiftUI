@@ -16,15 +16,7 @@ struct ExpenseItem: Identifiable, Codable {
 }
 
 class Expenses: ObservableObject {
-    @Published var items = [ExpenseItem]() {
-        didSet {
-            let encoder = JSONEncoder()
-            
-            if let encoded = try? encoder.encode(items) {
-                UserDefaults.standard.set(encoded, forKey: "Items")
-            }
-        }
-    }
+    @Published var items = [ExpenseItem]()
     
     init() {
         if let items = UserDefaults.standard.data(forKey: "Items") {
@@ -68,6 +60,13 @@ struct ContentView: View {
             })
             .sheet(isPresented: $showingAddExpense) {
                 AddView(expenses: self.expenses)
+            }
+            .onReceive(expenses.$items) { items in
+                let encoder = JSONEncoder()
+                
+                if let encoded = try? encoder.encode(items) {
+                    UserDefaults.standard.set(encoded, forKey: "Items")
+                }
             }
         }
     }

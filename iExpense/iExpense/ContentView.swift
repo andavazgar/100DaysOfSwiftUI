@@ -13,6 +13,16 @@ struct ExpenseItem: Identifiable, Codable {
     var name: String
     var type: String
     let amount: Int
+    var amountColor: Color {
+        switch amount {
+        case ..<10:
+            return .green
+        case ..<100:
+            return .orange
+        default:
+            return .red
+        }
+    }
 }
 
 class Expenses: ObservableObject {
@@ -48,12 +58,14 @@ struct ContentView: View {
                         }
                         Spacer()
                         Text("$\(item.amount)")
+                            .foregroundColor(item.amountColor)
                     }
                 }
                 .onDelete(perform: removeItems)
             }
             .navigationBarTitle("iExpense")
-            .navigationBarItems(trailing: Button(action: {
+            .navigationBarItems(leading: EditButton(),
+                                trailing: Button(action: {
                 self.showingAddExpense = true
             }) {
                 Image(systemName: "plus")

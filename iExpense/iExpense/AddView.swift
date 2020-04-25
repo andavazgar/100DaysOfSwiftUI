@@ -14,6 +14,8 @@ struct AddView: View {
     @State private var name = ""
     @State private var type = "Personal"
     @State private var amount = ""
+    @State private var showErrorAlert = false
+    @State private var errorAlert: (title: String, message: String)!
     static let types = ["Business", "Personal"]
     
     var body: some View {
@@ -37,8 +39,14 @@ struct AddView: View {
                     self.expenses.items.append(item)
                     
                     self.presentationMode.wrappedValue.dismiss()
+                } else {
+                    self.errorAlert = ("Invalid price", "Please enter a valid amount. Only integer values are allowed.")
+                    self.showErrorAlert = true
                 }
             })
+                .alert(isPresented: $showErrorAlert) {
+                    Alert(title: Text(errorAlert.title), message: Text(errorAlert.message), dismissButton: .default(Text("OK")))
+            }
         }
     }
 }

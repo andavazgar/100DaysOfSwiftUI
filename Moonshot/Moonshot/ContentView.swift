@@ -9,61 +9,27 @@
 import SwiftUI
 
 struct ContentView: View {
+    let astronauts: [Astronaut] = Bundle.main.decode("astronauts.json")
+    let missions: [Mission] = Bundle.main.decode("missions.json")
+    
     var body: some View {
         NavigationView {
-            VStack {
-                GeometryReader { geo in
-                    Image("hws")
+            List(missions) { mission in
+                NavigationLink(destination: MissionView(mission: mission)) {
+                    Image(mission.image)
                         .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: geo.size.width)
-                }
-    
-                ScrollView {
-                    VStack(spacing: 10) {
-                        ForEach(0..<100) {
-                            Text("Item \($0)")
-                                .font(.title)
-                        }
-                    }
-                    .frame(maxWidth: .infinity)
-                }
-                
-                NavigationLink(destination: Text("Details View")) {
-                    Text("Hello World")
-                }
-                .padding(.vertical, 25)
-                
-                Button("Decode JSON") {
-                    let input = """
-                    {
-                        "name": "Taylor Swift",
-                        "address": {
-                            "street": "555, Taylor Swift Avenue",
-                            "city": "Nashville"
-                        }
-                    }
-                    """
+                        .scaledToFit()
+                        .frame(width: 44)
                     
-                    struct User: Codable {
-                        var name: String
-                        var address: Address
-                    }
-                    
-                    struct Address: Codable {
-                        var street: String
-                        var city: String
-                    }
+                    VStack(alignment: .leading) {
+                        Text(mission.displayName)
+                            .font(.headline)
 
-                    let data = Data(input.utf8)
-                    let decoder = JSONDecoder()
-                    
-                    if let user = try? decoder.decode(User.self, from: data) {
-                        print(user.address.street)
+                        Text(mission.formattedLaunchDate)
                     }
                 }
             }
-            .navigationBarTitle("SwiftUI")
+            .navigationBarTitle("Moonshot")
         }
     }
 }

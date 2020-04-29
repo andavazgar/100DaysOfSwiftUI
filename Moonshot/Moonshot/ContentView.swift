@@ -15,7 +15,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List(missions) { mission in
-                NavigationLink(destination: MissionView(mission: mission)) {
+                NavigationLink(destination: MissionView(mission: mission, astronauts: self.astronauts)) {
                     Image(mission.image)
                         .resizable()
                         .scaledToFit()
@@ -36,6 +36,10 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        Group {
+            ContentView()
+            ContentView()
+                .colorScheme(.dark)
+        }
     }
 }

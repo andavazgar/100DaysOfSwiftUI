@@ -33,6 +33,11 @@ struct MissionView: View {
         self.crewMembers = crewMembersMatched
     }
     
+    init(mission: Mission) {
+        let astronauts: [Astronaut] = Bundle.main.decode("astronauts.json")
+        self.init(mission: mission, astronauts: astronauts)
+    }
+    
     var body: some View {
         GeometryReader { geometry in
             ScrollView {
@@ -41,6 +46,10 @@ struct MissionView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: geometry.size.width * 0.7)
+                        .padding(.top)
+                    
+                    Text("Launch Date: \(self.mission.formattedLaunchDate)")
+                        .foregroundColor(.secondary)
                         .padding(.top)
                     
                     Text(self.mission.description)

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		53362AFB245B7DCC00284ADF /* PathAndShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53362AFA245B7DCC00284ADF /* PathAndShapeView.swift */; };
+		53362AFD245B7E1700284ADF /* FlowerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53362AFC245B7E1700284ADF /* FlowerView.swift */; };
 		53FC9C92245A3D0000ADA7D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FC9C91245A3D0000ADA7D7 /* AppDelegate.swift */; };
 		53FC9C94245A3D0000ADA7D7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FC9C93245A3D0000ADA7D7 /* SceneDelegate.swift */; };
 		53FC9C96245A3D0000ADA7D7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FC9C95245A3D0000ADA7D7 /* ContentView.swift */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		53362AFA245B7DCC00284ADF /* PathAndShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathAndShapeView.swift; sourceTree = "<group>"; };
+		53362AFC245B7E1700284ADF /* FlowerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerView.swift; sourceTree = "<group>"; };
 		53FC9C8E245A3D0000ADA7D7 /* Drawing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drawing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53FC9C91245A3D0000ADA7D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		53FC9C93245A3D0000ADA7D7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +63,8 @@
 				53FC9C91245A3D0000ADA7D7 /* AppDelegate.swift */,
 				53FC9C93245A3D0000ADA7D7 /* SceneDelegate.swift */,
 				53FC9C95245A3D0000ADA7D7 /* ContentView.swift */,
+				53362AFA245B7DCC00284ADF /* PathAndShapeView.swift */,
+				53362AFC245B7E1700284ADF /* FlowerView.swift */,
 				53FC9C97245A3D0400ADA7D7 /* Assets.xcassets */,
 				53FC9C9C245A3D0400ADA7D7 /* LaunchScreen.storyboard */,
 				53FC9C9F245A3D0500ADA7D7 /* Info.plist */,
@@ -147,6 +153,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				53FC9C92245A3D0000ADA7D7 /* AppDelegate.swift in Sources */,
+				53362AFB245B7DCC00284ADF /* PathAndShapeView.swift in Sources */,
+				53362AFD245B7E1700284ADF /* FlowerView.swift in Sources */,
 				53FC9C94245A3D0000ADA7D7 /* SceneDelegate.swift in Sources */,
 				53FC9C96245A3D0000ADA7D7 /* ContentView.swift in Sources */,
 			);

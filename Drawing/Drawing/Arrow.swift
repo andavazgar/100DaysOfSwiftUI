@@ -20,10 +20,9 @@ struct Arrow: Shape {
             CGPoint(x: rect.maxX * 0.60, y: rect.midY * 1.2),
             CGPoint(x: rect.maxX, y: rect.midY)
         ])
+        path.addPath(path)
         
         path.addRect(CGRect(x: rect.minX, y: rect.midY * 0.9, width: rect.width * 0.75, height: rect.height * 0.1))
-        
-        path = path.applying(CGAffineTransform(rotationAngle: CGFloat.pi))
         
         return path
     }

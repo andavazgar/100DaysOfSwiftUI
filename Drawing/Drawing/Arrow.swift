@@ -8,29 +8,34 @@
 
 import SwiftUI
 
-struct Arrow: Shape {
+struct Arrow: InsettableShape {
     var direction: Angle = .degrees(0)
+    var insetAmount: CGFloat = 0
     
     func path(in rect: CGRect) -> Path {
         var path = Path()
-        path.move(to: CGPoint(x: rect.maxX, y: rect.midY))
-        path.addLines([
-            CGPoint(x: rect.maxX * 0.60, y: rect.midY * 0.8),
-            CGPoint(x: rect.maxX * 0.75, y: rect.midY),
-            CGPoint(x: rect.maxX * 0.60, y: rect.midY * 1.2),
-            CGPoint(x: rect.maxX, y: rect.midY)
-        ])
-        path.addPath(path)
-        
-        path.addRect(CGRect(x: rect.minX, y: rect.midY * 0.9, width: rect.width * 0.75, height: rect.height * 0.1))
+        path.move(to: CGPoint(x: rect.minX, y: rect.midY * 0.95))
+        path.addLine(to: CGPoint(x: rect.maxX * 0.60, y: rect.midY * 0.95))
+        path.addLine(to: CGPoint(x: rect.maxX * 0.60, y: rect.midY * 0.75))
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.midY))
+        path.addLine(to: CGPoint(x: rect.maxX * 0.60, y: rect.midY * 1.3))
+        path.addLine(to: CGPoint(x: rect.maxX * 0.60, y: rect.midY * 1.1))
+        path.addLine(to: CGPoint(x: rect.minX, y: rect.midY * 1.1))
+        path.addLine(to: CGPoint(x: rect.minX, y: rect.midY * 0.95))
         
         return path
+    }
+    
+    func inset(by amount: CGFloat) -> Arrow {
+        var arrow = self
+        arrow.insetAmount += amount
+        return arrow
     }
 }
 
 struct Arrow_Previews: PreviewProvider {
     static var previews: some View {
         Arrow(direction: .degrees(90))
-            .fill(Color.blue)
+            .strokeBorder(Color.blue, lineWidth: 5)
     }
 }

@@ -9,8 +9,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var colorCycle = 0.0
     var body: some View {
-        FlowerView()
+        VStack {
+            ColorCyclingCircle(amount: colorCycle)
+            
+            Slider(value: $colorCycle)
+        }
     }
 }
 
@@ -18,6 +23,9 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             PathAndShapeView()
+            FlowerView()
+            ImagePaintView()
+            Arrow(direction: .degrees(0))
             ContentView()
         }
     }

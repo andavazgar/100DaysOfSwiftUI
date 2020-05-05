@@ -13,17 +13,21 @@ struct Arrow: InsettableShape {
     var insetAmount: CGFloat = 0
     
     func path(in rect: CGRect) -> Path {
+        let insettedRect = rect.insetBy(dx: insetAmount, dy: insetAmount)
         var path = Path()
-        path.move(to: CGPoint(x: rect.minX, y: rect.midY * 0.95))
-        path.addLine(to: CGPoint(x: rect.maxX * 0.60, y: rect.midY * 0.95))
-        path.addLine(to: CGPoint(x: rect.maxX * 0.60, y: rect.midY * 0.75))
-        path.addLine(to: CGPoint(x: rect.maxX, y: rect.midY))
-        path.addLine(to: CGPoint(x: rect.maxX * 0.60, y: rect.midY * 1.3))
-        path.addLine(to: CGPoint(x: rect.maxX * 0.60, y: rect.midY * 1.1))
-        path.addLine(to: CGPoint(x: rect.minX, y: rect.midY * 1.1))
-        path.addLine(to: CGPoint(x: rect.minX, y: rect.midY * 0.95))
+        path.addLines([
+            CGPoint(x: insettedRect.minX, y: insettedRect.midY * 0.9),
+            CGPoint(x: insettedRect.maxX * 0.65, y: insettedRect.midY * 0.9),
+            CGPoint(x: insettedRect.maxX * 0.60, y: insettedRect.midY * 0.75),
+            CGPoint(x: insettedRect.maxX, y: insettedRect.midY),
+            CGPoint(x: insettedRect.maxX * 0.60, y: insettedRect.midY * 1.25),
+            CGPoint(x: insettedRect.maxX * 0.65, y: insettedRect.midY * 1.1),
+            CGPoint(x: insettedRect.minX, y: insettedRect.midY * 1.1),
+            CGPoint(x: insettedRect.minX, y: insettedRect.midY * 0.9)
+        ])
+        path.closeSubpath()
         
-        return path
+        return path.rotation(.degrees(-direction.degrees)).path(in: insettedRect)
     }
     
     func inset(by amount: CGFloat) -> Arrow {

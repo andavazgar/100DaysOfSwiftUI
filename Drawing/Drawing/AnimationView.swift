@@ -69,7 +69,7 @@ struct AnimationView: View {
     @State private var columns = 4
 
     var body: some View {
-        VStack {
+        VStack(spacing: 100) {
             Trapezoid(insetAmount: insetAmount)
                 .frame(width: 200, height: 100)
                 .onTapGesture {

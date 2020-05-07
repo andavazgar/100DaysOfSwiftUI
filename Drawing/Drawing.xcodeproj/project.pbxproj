@@ -14,6 +14,7 @@
 		53E69766245D1B64004B1D51 /* Arrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E69765245D1B64004B1D51 /* Arrow.swift */; };
 		53EB725A246250B30011400E /* BlendModesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EB7259246250B30011400E /* BlendModesView.swift */; };
 		53EB725C24625E240011400E /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EB725B24625E240011400E /* AnimationView.swift */; };
+		53EB725E2463BC2E0011400E /* ColorCyclingRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EB725D2463BC2E0011400E /* ColorCyclingRectangle.swift */; };
 		53FC9C92245A3D0000ADA7D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FC9C91245A3D0000ADA7D7 /* AppDelegate.swift */; };
 		53FC9C94245A3D0000ADA7D7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FC9C93245A3D0000ADA7D7 /* SceneDelegate.swift */; };
 		53FC9C96245A3D0000ADA7D7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FC9C95245A3D0000ADA7D7 /* ContentView.swift */; };
@@ -30,6 +31,7 @@
 		53E69765245D1B64004B1D51 /* Arrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arrow.swift; sourceTree = "<group>"; };
 		53EB7259246250B30011400E /* BlendModesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlendModesView.swift; sourceTree = "<group>"; };
 		53EB725B24625E240011400E /* AnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationView.swift; sourceTree = "<group>"; };
+		53EB725D2463BC2E0011400E /* ColorCyclingRectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCyclingRectangle.swift; sourceTree = "<group>"; };
 		53FC9C8E245A3D0000ADA7D7 /* Drawing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drawing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53FC9C91245A3D0000ADA7D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		53FC9C93245A3D0000ADA7D7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 				53362AFC245B7E1700284ADF /* FlowerView.swift */,
 				5356C5F92460BC9000005980 /* ImagePaintView.swift */,
 				5356C5FB2460C1EA00005980 /* ColorCyclingCircle.swift */,
+				53EB725D2463BC2E0011400E /* ColorCyclingRectangle.swift */,
 				53EB7259246250B30011400E /* BlendModesView.swift */,
 				53EB725B24625E240011400E /* AnimationView.swift */,
 				53E69765245D1B64004B1D51 /* Arrow.swift */,
@@ -174,6 +177,7 @@
 				53FC9C94245A3D0000ADA7D7 /* SceneDelegate.swift in Sources */,
 				5356C5FA2460BC9000005980 /* ImagePaintView.swift in Sources */,
 				5356C5FC2460C1EA00005980 /* ColorCyclingCircle.swift in Sources */,
+				53EB725E2463BC2E0011400E /* ColorCyclingRectangle.swift in Sources */,
 				53FC9C96245A3D0000ADA7D7 /* ContentView.swift in Sources */,
 				53EB725A246250B30011400E /* BlendModesView.swift in Sources */,
 				53E69766245D1B64004B1D51 /* Arrow.swift in Sources */,

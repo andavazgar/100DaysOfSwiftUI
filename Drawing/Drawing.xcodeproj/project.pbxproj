@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		53362AFB245B7DCC00284ADF /* PathAndShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53362AFA245B7DCC00284ADF /* PathAndShapeView.swift */; };
 		53362AFD245B7E1700284ADF /* FlowerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53362AFC245B7E1700284ADF /* FlowerView.swift */; };
+		533654E6246506DA00F559E7 /* Spirograph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533654E5246506DA00F559E7 /* Spirograph.swift */; };
 		5356C5FA2460BC9000005980 /* ImagePaintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5356C5F92460BC9000005980 /* ImagePaintView.swift */; };
 		5356C5FC2460C1EA00005980 /* ColorCyclingCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5356C5FB2460C1EA00005980 /* ColorCyclingCircle.swift */; };
 		53E69766245D1B64004B1D51 /* Arrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E69765245D1B64004B1D51 /* Arrow.swift */; };
@@ -26,6 +27,7 @@
 /* Begin PBXFileReference section */
 		53362AFA245B7DCC00284ADF /* PathAndShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathAndShapeView.swift; sourceTree = "<group>"; };
 		53362AFC245B7E1700284ADF /* FlowerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerView.swift; sourceTree = "<group>"; };
+		533654E5246506DA00F559E7 /* Spirograph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spirograph.swift; sourceTree = "<group>"; };
 		5356C5F92460BC9000005980 /* ImagePaintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePaintView.swift; sourceTree = "<group>"; };
 		5356C5FB2460C1EA00005980 /* ColorCyclingCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCyclingCircle.swift; sourceTree = "<group>"; };
 		53E69765245D1B64004B1D51 /* Arrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arrow.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 				5356C5F92460BC9000005980 /* ImagePaintView.swift */,
 				5356C5FB2460C1EA00005980 /* ColorCyclingCircle.swift */,
 				53EB725D2463BC2E0011400E /* ColorCyclingRectangle.swift */,
+				533654E5246506DA00F559E7 /* Spirograph.swift */,
 				53EB7259246250B30011400E /* BlendModesView.swift */,
 				53EB725B24625E240011400E /* AnimationView.swift */,
 				53E69765245D1B64004B1D51 /* Arrow.swift */,
@@ -172,6 +175,7 @@
 			files = (
 				53FC9C92245A3D0000ADA7D7 /* AppDelegate.swift in Sources */,
 				53EB725C24625E240011400E /* AnimationView.swift in Sources */,
+				533654E6246506DA00F559E7 /* Spirograph.swift in Sources */,
 				53362AFB245B7DCC00284ADF /* PathAndShapeView.swift in Sources */,
 				53362AFD245B7E1700284ADF /* FlowerView.swift in Sources */,
 				53FC9C94245A3D0000ADA7D7 /* SceneDelegate.swift in Sources */,

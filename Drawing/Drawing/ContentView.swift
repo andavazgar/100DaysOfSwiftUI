@@ -25,6 +25,7 @@ struct ContentView_Previews: PreviewProvider {
             PathAndShapeView()
             FlowerView()
             ImagePaintView()
+            SpirographView()
             Arrow(direction: .degrees(0))
             ContentView()
         }

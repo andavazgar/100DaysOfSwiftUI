@@ -80,12 +80,12 @@ struct AnimationView: View {
             
             Checkerboard(rows: rows, columns: columns)
                 .frame(width:400, height:400)
-            .onTapGesture {
-                withAnimation(.linear(duration: 2)) {
-                    self.rows = self.rows == 4 ? 8: 4
-                    self.columns = self.columns == 4 ? 8: 4
+                .onTapGesture {
+                    withAnimation(.linear(duration: 2)) {
+                        self.rows = self.rows == 4 ? 8: 4
+                        self.columns = self.columns == 4 ? 8: 4
+                    }
                 }
-            }
         }
     }
 }

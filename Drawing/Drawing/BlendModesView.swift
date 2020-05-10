@@ -40,7 +40,7 @@ struct BlendModesView: View {
                 .scaledToFit()
                 .frame(width: 200)
                 .saturation(Double(amount))
-            .blur(radius: (1 - amount) * 10)
+                .blur(radius: (1 - amount) * 10)
                 .padding(.bottom, 20)
             
             Slider(value: $amount)

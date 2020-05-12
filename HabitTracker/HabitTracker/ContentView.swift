@@ -9,11 +9,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var habitsList = HabitsList()
+    
     var body: some View {
         NavigationView {
             List {
-                ForEach(0..<5) {
-                    Text("Row \($0)")
+                ForEach(0..<5) { item in
+                    NavigationLink(destination: ContentView()) {
+                        Text("Row \(item)")
+                    }
                 }
             }
             .navigationBarTitle("Habit Tracker")
@@ -22,6 +26,9 @@ struct ContentView: View {
             }) {
                 Image(systemName: "plus")
             })
+            .onAppear {
+                self.habitsList.load()
+            }
         }
     }
 }

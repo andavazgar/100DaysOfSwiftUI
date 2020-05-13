@@ -7,18 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		534968D6246B34BC00DFB2D4 /* AddNewFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534968D5246B34BC00DFB2D4 /* AddNewFormView.swift */; };
 		53E03E66246903E3003A926E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E03E65246903E3003A926E /* AppDelegate.swift */; };
 		53E03E68246903E3003A926E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E03E67246903E3003A926E /* SceneDelegate.swift */; };
 		53E03E6A246903E3003A926E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E03E69246903E3003A926E /* ContentView.swift */; };
 		53E03E6C246903E5003A926E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53E03E6B246903E5003A926E /* Assets.xcassets */; };
 		53E03E6F246903E5003A926E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53E03E6E246903E5003A926E /* Preview Assets.xcassets */; };
 		53E03E72246903E5003A926E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53E03E70246903E5003A926E /* LaunchScreen.storyboard */; };
-		53E03E7A2469064B003A926E /* DetailVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E03E792469064B003A926E /* DetailVIew.swift */; };
 		53E03E7C246A17DB003A926E /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E03E7B246A17DB003A926E /* Activity.swift */; };
 		53E03E7E246A48D6003A926E /* HabitsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E03E7D246A48D6003A926E /* HabitsList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		534968D5246B34BC00DFB2D4 /* AddNewFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewFormView.swift; sourceTree = "<group>"; };
 		53E03E62246903E3003A926E /* HabitTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabitTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53E03E65246903E3003A926E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		53E03E67246903E3003A926E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -27,7 +28,6 @@
 		53E03E6E246903E5003A926E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		53E03E71246903E5003A926E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		53E03E73246903E5003A926E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		53E03E792469064B003A926E /* DetailVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVIew.swift; sourceTree = "<group>"; };
 		53E03E7B246A17DB003A926E /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		53E03E7D246A48D6003A926E /* HabitsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -65,9 +65,9 @@
 				53E03E65246903E3003A926E /* AppDelegate.swift */,
 				53E03E67246903E3003A926E /* SceneDelegate.swift */,
 				53E03E69246903E3003A926E /* ContentView.swift */,
+				534968D5246B34BC00DFB2D4 /* AddNewFormView.swift */,
 				53E03E7B246A17DB003A926E /* Activity.swift */,
 				53E03E7D246A48D6003A926E /* HabitsList.swift */,
-				53E03E792469064B003A926E /* DetailVIew.swift */,
 				53E03E6B246903E5003A926E /* Assets.xcassets */,
 				53E03E70246903E5003A926E /* LaunchScreen.storyboard */,
 				53E03E73246903E5003A926E /* Info.plist */,
@@ -156,7 +156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				53E03E66246903E3003A926E /* AppDelegate.swift in Sources */,
-				53E03E7A2469064B003A926E /* DetailVIew.swift in Sources */,
+				534968D6246B34BC00DFB2D4 /* AddNewFormView.swift in Sources */,
 				53E03E7E246A48D6003A926E /* HabitsList.swift in Sources */,
 				53E03E7C246A17DB003A926E /* Activity.swift in Sources */,
 				53E03E68246903E3003A926E /* SceneDelegate.swift in Sources */,

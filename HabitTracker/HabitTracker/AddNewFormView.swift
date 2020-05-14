@@ -13,19 +13,20 @@ struct AddNewFormView: View {
     @State private var description = ""
     
     var body: some View {
-        Form {
-            TextField("New Activity", text: $title)
-            TextField("Description", text: $description)
-                .frame(height: 70)
+        NavigationView {
+            Form {
+                TextField("New Activity", text: $title)
+                TextView(text: $description, placeholder: "Description")
+                    .frame(height: 70)
+                    .font(.headline)
+            }
+            .navigationBarTitle("Add new activity")
         }
-        .navigationBarTitle("Add new activity")
     }
 }
 
 struct AddNewFormView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
-            AddNewFormView()
-        }
+        AddNewFormView()
     }
 }

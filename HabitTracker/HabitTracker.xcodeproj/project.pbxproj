@@ -16,6 +16,7 @@
 		53E03E72246903E5003A926E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53E03E70246903E5003A926E /* LaunchScreen.storyboard */; };
 		53E03E7C246A17DB003A926E /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E03E7B246A17DB003A926E /* Activity.swift */; };
 		53E03E7E246A48D6003A926E /* HabitsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E03E7D246A48D6003A926E /* HabitsList.swift */; };
+		53F665A5246CE8E5009647E3 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F665A4246CE8E5009647E3 /* TextView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		53E03E73246903E5003A926E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		53E03E7B246A17DB003A926E /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		53E03E7D246A48D6003A926E /* HabitsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsList.swift; sourceTree = "<group>"; };
+		53F665A4246CE8E5009647E3 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				53E03E67246903E3003A926E /* SceneDelegate.swift */,
 				53E03E69246903E3003A926E /* ContentView.swift */,
 				534968D5246B34BC00DFB2D4 /* AddNewFormView.swift */,
+				53F665A4246CE8E5009647E3 /* TextView.swift */,
 				53E03E7B246A17DB003A926E /* Activity.swift */,
 				53E03E7D246A48D6003A926E /* HabitsList.swift */,
 				53E03E6B246903E5003A926E /* Assets.xcassets */,
@@ -158,6 +161,7 @@
 				53E03E66246903E3003A926E /* AppDelegate.swift in Sources */,
 				534968D6246B34BC00DFB2D4 /* AddNewFormView.swift in Sources */,
 				53E03E7E246A48D6003A926E /* HabitsList.swift in Sources */,
+				53F665A5246CE8E5009647E3 /* TextView.swift in Sources */,
 				53E03E7C246A17DB003A926E /* Activity.swift in Sources */,
 				53E03E68246903E3003A926E /* SceneDelegate.swift in Sources */,
 				53E03E6A246903E3003A926E /* ContentView.swift in Sources */,

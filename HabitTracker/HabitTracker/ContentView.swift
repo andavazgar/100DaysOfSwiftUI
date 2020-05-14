@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var habitsList = HabitsList()
+    @State private var showAddNewFormView = false
     
     var body: some View {
         NavigationView {
@@ -22,12 +23,15 @@ struct ContentView: View {
             }
             .navigationBarTitle("Habit Tracker")
             .navigationBarItems(trailing: Button(action: {
-                
+                self.showAddNewFormView = true
             }) {
                 Image(systemName: "plus")
             })
             .onAppear {
                 self.habitsList.load()
+            }
+            .sheet(isPresented: $showAddNewFormView) {
+                AddNewFormView()
             }
         }
     }

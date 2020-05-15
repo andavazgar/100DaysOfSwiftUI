@@ -12,17 +12,22 @@ struct TextViewRepresentable: UIViewRepresentable {
     @Binding var text: String
     var placeholder: String
     var font: UIFont
+    @State private var placeholderLabel: UILabel?
     
     func makeCoordinator() -> Coordinator {
-        return Coordinator(placeholder: placeholder)
+        return Coordinator(placeholder: placeholderLabel)
     }
     
     func makeUIView(context: Context) -> UITextView {
+        placeholderLabel = UILabel()
+        placeholderLabel!.textColor = .lightGray
+        placeholderLabel!.text = placeholder
+        
         let textView = UITextView()
         textView.font = font
-        textView.text = placeholder
-        textView.textColor = .lightGray
         textView.delegate = context.coordinator
+        
+        textView.addSubview(placeholderLabel!)
         return textView
     }
     
@@ -31,9 +36,9 @@ struct TextViewRepresentable: UIViewRepresentable {
     }
     
     class Coordinator: NSObject, UITextViewDelegate {
-        var placeholder: String
+        var placeholder: UILabel!
         
-        init(placeholder: String) {
+        init(placeholder: UILabel?) {
             self.placeholder = placeholder
         }
         
@@ -42,18 +47,12 @@ struct TextViewRepresentable: UIViewRepresentable {
             let updatedText = (currentText as NSString).replacingCharacters(in: range, with: text)
 
             if updatedText.isEmpty {
-                textView.text = placeholder
-                textView.textColor = UIColor.lightGray
-                
-                textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
-            } else if textView.textColor == UIColor.lightGray && !text.isEmpty {
-                textView.textColor = .black
-                textView.text = text
+                placeholder.isHidden = false
             } else {
-                return true
+                placeholder.isHidden = true
             }
             
-            return false
+            return true
         }
     }
 }

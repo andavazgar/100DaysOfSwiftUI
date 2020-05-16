@@ -12,22 +12,18 @@ struct TextViewRepresentable: UIViewRepresentable {
     @Binding var text: String
     var placeholder: String
     var font: UIFont
-    @State private var placeholderLabel: UILabel?
     
     func makeCoordinator() -> Coordinator {
-        return Coordinator(placeholder: placeholderLabel)
+        return Coordinator()
     }
     
     func makeUIView(context: Context) -> UITextView {
-        placeholderLabel = UILabel()
-        placeholderLabel!.textColor = .lightGray
-        placeholderLabel!.text = placeholder
-        
-        let textView = UITextView()
+        let textView = TextViewWithPlaceholder()
+        textView.setup(placeholder: placeholder)
         textView.font = font
         textView.delegate = context.coordinator
         
-        textView.addSubview(placeholderLabel!)
+        context.coordinator.textView = textView
         return textView
     }
     
@@ -36,20 +32,16 @@ struct TextViewRepresentable: UIViewRepresentable {
     }
     
     class Coordinator: NSObject, UITextViewDelegate {
-        var placeholder: UILabel!
-        
-        init(placeholder: UILabel?) {
-            self.placeholder = placeholder
-        }
+        var textView: TextViewWithPlaceholder!
         
         func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
             let currentText:String = textView.text
             let updatedText = (currentText as NSString).replacingCharacters(in: range, with: text)
 
             if updatedText.isEmpty {
-                placeholder.isHidden = false
+                self.textView.showPlaceholder()
             } else {
-                placeholder.isHidden = true
+                self.textView.hidePlaceholder()
             }
             
             return true

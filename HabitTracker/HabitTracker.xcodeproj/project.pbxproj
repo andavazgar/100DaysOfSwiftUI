@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		534968D6246B34BC00DFB2D4 /* AddNewFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534968D5246B34BC00DFB2D4 /* AddNewFormView.swift */; };
+		5381446C246E4B4600C28DF4 /* TextViewWithPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5381446B246E4B4600C28DF4 /* TextViewWithPlaceholder.swift */; };
 		53E03E66246903E3003A926E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E03E65246903E3003A926E /* AppDelegate.swift */; };
 		53E03E68246903E3003A926E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E03E67246903E3003A926E /* SceneDelegate.swift */; };
 		53E03E6A246903E3003A926E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E03E69246903E3003A926E /* ContentView.swift */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		534968D5246B34BC00DFB2D4 /* AddNewFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewFormView.swift; sourceTree = "<group>"; };
+		5381446B246E4B4600C28DF4 /* TextViewWithPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewWithPlaceholder.swift; sourceTree = "<group>"; };
 		53E03E62246903E3003A926E /* HabitTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabitTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53E03E65246903E3003A926E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		53E03E67246903E3003A926E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				53E03E69246903E3003A926E /* ContentView.swift */,
 				534968D5246B34BC00DFB2D4 /* AddNewFormView.swift */,
 				53F665A4246CE8E5009647E3 /* TextView.swift */,
+				5381446B246E4B4600C28DF4 /* TextViewWithPlaceholder.swift */,
 				53E03E7B246A17DB003A926E /* Activity.swift */,
 				53E03E7D246A48D6003A926E /* HabitsList.swift */,
 				53E03E6B246903E5003A926E /* Assets.xcassets */,
@@ -165,6 +168,7 @@
 				53E03E7C246A17DB003A926E /* Activity.swift in Sources */,
 				53E03E68246903E3003A926E /* SceneDelegate.swift in Sources */,
 				53E03E6A246903E3003A926E /* ContentView.swift in Sources */,
+				5381446C246E4B4600C28DF4 /* TextViewWithPlaceholder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

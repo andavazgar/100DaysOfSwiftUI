@@ -15,9 +15,12 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(0..<5) { item in
+                ForEach(habitsList.activities) { activity in
                     NavigationLink(destination: ContentView()) {
-                        Text("Row \(item)")
+                        VStack {
+                            Text(activity.title)
+                            Text(activity.description)
+                        }
                     }
                 }
             }
@@ -31,7 +34,7 @@ struct ContentView: View {
                 self.habitsList.load()
             }
             .sheet(isPresented: $showAddNewFormView) {
-                AddNewFormView()
+                AddNewFormView(habitsList: $habitsList)
             }
         }
     }

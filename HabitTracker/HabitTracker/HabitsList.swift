@@ -11,6 +11,15 @@ import SwiftUI
 class HabitsList: ObservableObject, Codable {
     var activities = [Activity]()
     
+    init() {
+        load()
+    }
+    
+    func add(newActivity activity: Activity) {
+        self.activities.append(activity)
+        save()
+    }
+    
     func load() {
         guard let data = UserDefaults.standard.data(forKey: "HabitsList") else { return }
         

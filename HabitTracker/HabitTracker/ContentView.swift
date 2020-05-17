@@ -30,11 +30,8 @@ struct ContentView: View {
             }) {
                 Image(systemName: "plus")
             })
-            .onAppear {
-                self.habitsList.load()
-            }
             .sheet(isPresented: $showAddNewFormView) {
-                AddNewFormView(habitsList: $habitsList)
+                AddNewFormView(habitsList: self.habitsList)
             }
         }
     }

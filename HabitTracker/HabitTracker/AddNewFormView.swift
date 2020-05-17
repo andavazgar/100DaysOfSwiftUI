@@ -9,9 +9,10 @@
 import SwiftUI
 
 struct AddNewFormView: View {
+    @Environment(\.presentationMode) var presentationMode
     @State private var title = ""
     @State private var description = ""
-    @Binding var habitsList: HabitsList
+    var habitsList: HabitsList
     
     var body: some View {
         NavigationView {
@@ -20,8 +21,12 @@ struct AddNewFormView: View {
                 TextView(text: $description, placeholder: "Description")
                     .frame(height: 70)
                     .font(.headline)
-                Button("Add") {
-                    self.habitsList.activities.append(Activity(title: self.title, description: self.description))
+                Section {
+                    Button("Add") {
+                        self.habitsList.add(newActivity: Activity(title: self.title, description: self.description))
+                        self.presentationMode.wrappedValue.dismiss()
+                    }
+                    .frame(maxWidth: .infinity)
                 }
             }
             .navigationBarTitle("Add new activity")
@@ -31,6 +36,6 @@ struct AddNewFormView: View {
 
 struct AddNewFormView_Previews: PreviewProvider {
     static var previews: some View {
-        AddNewFormView(habitsList: .constant(HabitsList()))
+        AddNewFormView(habitsList: HabitsList())
     }
 }

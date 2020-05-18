@@ -12,7 +12,8 @@ struct AddNewFormView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var title = ""
     @State private var description = ""
-    var habitsList: HabitsList
+    var habitsList: HabitsList?
+    var activity: Activity?
     
     var body: some View {
         NavigationView {
@@ -22,11 +23,19 @@ struct AddNewFormView: View {
                     .frame(height: 70)
                     .font(.headline)
                 Section {
-                    Button("Add") {
-                        self.habitsList.add(newActivity: Activity(title: self.title, description: self.description))
-                        self.presentationMode.wrappedValue.dismiss()
+                    if activity != nil {
+                        Button("Save changes") {
+                            self.habitsList?.add(newActivity: Activity(title: self.title, description: self.description))
+                            self.presentationMode.wrappedValue.dismiss()
+                        }
+                        .frame(maxWidth: .infinity)
+                    } else {
+                        Button("Add") {
+                            self.habitsList?.add(newActivity: Activity(title: self.title, description: self.description))
+                            self.presentationMode.wrappedValue.dismiss()
+                        }
+                        .frame(maxWidth: .infinity)
                     }
-                    .frame(maxWidth: .infinity)
                 }
             }
             .navigationBarTitle("Add new activity")

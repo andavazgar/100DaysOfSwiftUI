@@ -16,7 +16,7 @@ struct ContentView: View {
         NavigationView {
             List {
                 ForEach(habitsList.activities) { activity in
-                    NavigationLink(destination: ContentView()) {
+                    NavigationLink(destination: AddNewFormView(habitsList: <#T##HabitsList#>)) {
                         VStack {
                             Text(activity.title)
                             Text(activity.description)

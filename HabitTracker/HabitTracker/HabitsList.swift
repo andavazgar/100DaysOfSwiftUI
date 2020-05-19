@@ -20,6 +20,13 @@ class HabitsList: ObservableObject, Codable {
         save()
     }
     
+    func edit(activity: Activity) {
+        if let indexToReplace = activities.firstIndex(where: { $0.id == activity.id }) {
+            activities[indexToReplace] = activity
+            save()
+        }
+    }
+    
     func load() {
         guard let data = UserDefaults.standard.data(forKey: "HabitsList") else { return }
         

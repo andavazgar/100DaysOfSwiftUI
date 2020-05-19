@@ -16,7 +16,7 @@ struct ContentView: View {
         NavigationView {
             List {
                 ForEach(habitsList.activities) { activity in
-                    NavigationLink(destination: AddNewFormView(habitsList: <#T##HabitsList#>)) {
+                    NavigationLink(destination: FormView(habitsList: self.habitsList, activity: activity)) {
                         VStack {
                             Text(activity.title)
                             Text(activity.description)
@@ -31,7 +31,9 @@ struct ContentView: View {
                 Image(systemName: "plus")
             })
             .sheet(isPresented: $showAddNewFormView) {
-                AddNewFormView(habitsList: self.habitsList)
+                NavigationView {
+                    FormView(habitsList: self.habitsList)
+                }
             }
         }
     }

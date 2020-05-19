@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		534968D6246B34BC00DFB2D4 /* AddNewFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534968D5246B34BC00DFB2D4 /* AddNewFormView.swift */; };
+		534968D6246B34BC00DFB2D4 /* FormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534968D5246B34BC00DFB2D4 /* FormView.swift */; };
 		5381446C246E4B4600C28DF4 /* TextViewWithPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5381446B246E4B4600C28DF4 /* TextViewWithPlaceholder.swift */; };
 		53E03E66246903E3003A926E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E03E65246903E3003A926E /* AppDelegate.swift */; };
 		53E03E68246903E3003A926E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E03E67246903E3003A926E /* SceneDelegate.swift */; };
@@ -21,7 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		534968D5246B34BC00DFB2D4 /* AddNewFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewFormView.swift; sourceTree = "<group>"; };
+		534968D5246B34BC00DFB2D4 /* FormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormView.swift; sourceTree = "<group>"; };
 		5381446B246E4B4600C28DF4 /* TextViewWithPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewWithPlaceholder.swift; sourceTree = "<group>"; };
 		53E03E62246903E3003A926E /* HabitTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabitTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53E03E65246903E3003A926E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -69,7 +69,7 @@
 				53E03E65246903E3003A926E /* AppDelegate.swift */,
 				53E03E67246903E3003A926E /* SceneDelegate.swift */,
 				53E03E69246903E3003A926E /* ContentView.swift */,
-				534968D5246B34BC00DFB2D4 /* AddNewFormView.swift */,
+				534968D5246B34BC00DFB2D4 /* FormView.swift */,
 				53F665A4246CE8E5009647E3 /* TextView.swift */,
 				5381446B246E4B4600C28DF4 /* TextViewWithPlaceholder.swift */,
 				53E03E7B246A17DB003A926E /* Activity.swift */,
@@ -162,7 +162,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				53E03E66246903E3003A926E /* AppDelegate.swift in Sources */,
-				534968D6246B34BC00DFB2D4 /* AddNewFormView.swift in Sources */,
+				534968D6246B34BC00DFB2D4 /* FormView.swift in Sources */,
 				53E03E7E246A48D6003A926E /* HabitsList.swift in Sources */,
 				53F665A5246CE8E5009647E3 /* TextView.swift in Sources */,
 				53E03E7C246A17DB003A926E /* Activity.swift in Sources */,

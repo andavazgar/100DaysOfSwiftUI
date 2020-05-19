@@ -14,7 +14,7 @@ struct TextViewRepresentable: UIViewRepresentable {
     var font: UIFont
     
     func makeCoordinator() -> Coordinator {
-        return Coordinator()
+        return Coordinator(parent: self)
     }
     
     func makeUIView(context: Context) -> UITextView {
@@ -32,7 +32,12 @@ struct TextViewRepresentable: UIViewRepresentable {
     }
     
     class Coordinator: NSObject, UITextViewDelegate {
+        var parent: TextViewRepresentable
         var textView: TextViewWithPlaceholder!
+        
+        init(parent: TextViewRepresentable) {
+            self.parent = parent
+        }
         
         func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
             let currentText:String = textView.text
@@ -45,6 +50,10 @@ struct TextViewRepresentable: UIViewRepresentable {
             }
             
             return true
+        }
+        
+        func textViewDidChange(_ textView: UITextView) {
+            parent.text = textView.text
         }
     }
 }

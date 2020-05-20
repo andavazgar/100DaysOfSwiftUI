@@ -8,63 +8,48 @@
 
 import SwiftUI
 
-struct TextViewRepresentable: UIViewRepresentable {
+struct TextView: UIViewRepresentable {
     @Binding var text: String
-    var placeholder: String
-    var font: UIFont
+    var placeholder: String = ""
+    var font: UIFont = UIFont.preferredFont(forTextStyle: .body)
+    @State private var textView = TextViewWithPlaceholder()
     
     func makeCoordinator() -> Coordinator {
         return Coordinator(parent: self)
     }
     
     func makeUIView(context: Context) -> UITextView {
-        let textView = TextViewWithPlaceholder()
         textView.setup(placeholder: placeholder)
         textView.font = font
         textView.delegate = context.coordinator
         
-        context.coordinator.textView = textView
         return textView
     }
     
     func updateUIView(_ uiView: UITextView, context: Context) {
-        
+        if textView.text.isEmpty {
+            self.textView.showPlaceholder()
+        } else {
+            self.textView.hidePlaceholder()
+        }
+        uiView.text = text
     }
     
     class Coordinator: NSObject, UITextViewDelegate {
-        var parent: TextViewRepresentable
-        var textView: TextViewWithPlaceholder!
+        var parent: TextView
         
-        init(parent: TextViewRepresentable) {
+        init(parent: TextView) {
             self.parent = parent
         }
         
-        func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-            let currentText:String = textView.text
-            let updatedText = (currentText as NSString).replacingCharacters(in: range, with: text)
-
-            if updatedText.isEmpty {
-                self.textView.showPlaceholder()
-            } else {
-                self.textView.hidePlaceholder()
-            }
-            
-            return true
-        }
-        
         func textViewDidChange(_ textView: UITextView) {
+            if textView.text.isEmpty {
+                self.parent.textView.showPlaceholder()
+            } else {
+                self.parent.textView.hidePlaceholder()
+            }
             parent.text = textView.text
         }
-    }
-}
-
-struct TextView: View {
-    @Binding var text: String
-    var placeholder: String = ""
-    var font: UIFont = UIFont.preferredFont(forTextStyle: .body)
-    
-    var body: some View {
-        TextViewRepresentable(text: $text, placeholder: placeholder, font: font)
     }
 }
 

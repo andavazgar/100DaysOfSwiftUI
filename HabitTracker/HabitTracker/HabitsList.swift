@@ -9,7 +9,7 @@
 import SwiftUI
 
 class HabitsList: ObservableObject, Codable {
-    var activities = [Activity]()
+    @Published var activities = [Activity]()
     
     init() {
         load()
@@ -43,6 +43,21 @@ class HabitsList: ObservableObject, Codable {
             UserDefaults.standard.set(data, forKey: "HabitsList")
         }
         
+    }
+    
+    // MARK: - Needed for Codable
+    enum CodingKeys: CodingKey {
+        case activities
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        activities = try container.decode([Activity].self, forKey: .activities)
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(activities, forKey: .activities)
     }
 }
 

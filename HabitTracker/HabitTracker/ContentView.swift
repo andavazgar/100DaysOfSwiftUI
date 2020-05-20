@@ -17,7 +17,7 @@ struct ContentView: View {
             List {
                 ForEach(habitsList.activities) { activity in
                     NavigationLink(destination: FormView(habitsList: self.habitsList, activity: activity)) {
-                        VStack {
+                        VStack(alignment: .leading) {
                             Text(activity.title)
                             Text(activity.description)
                         }

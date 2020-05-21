@@ -26,6 +26,10 @@ class HabitsList: ObservableObject, Codable {
             save()
         }
     }
+    func remove(_ indexSet: IndexSet) {
+        activities.remove(atOffsets: indexSet)
+        save()
+    }
     
     func load() {
         guard let data = UserDefaults.standard.data(forKey: "HabitsList") else { return }

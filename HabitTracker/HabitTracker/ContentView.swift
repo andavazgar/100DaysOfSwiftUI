@@ -17,12 +17,23 @@ struct ContentView: View {
             List {
                 ForEach(habitsList.activities) { activity in
                     NavigationLink(destination: FormView(habitsList: self.habitsList, activity: activity)) {
-                        VStack(alignment: .leading) {
-                            Text(activity.title)
-                            Text(activity.description)
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text(activity.title)
+                                    .font(.headline)
+                                
+                                Text(activity.description)
+                                    .font(.callout)
+                                    .foregroundColor(.secondary)
+                            }
+                            
+                            Spacer()
+                            Text("×\(activity.completionCount)")
+                                .padding(.trailing, 5)
                         }
                     }
                 }
+                .onDelete(perform: habitsList.remove)
             }
             .navigationBarTitle("Habit Tracker")
             .navigationBarItems(trailing: Button(action: {

@@ -55,7 +55,7 @@ struct FormView: View {
                 }
             }
         }
-        .navigationBarTitle("Add new activity")
+        .navigationBarTitle(activity == nil ? "Add new activity" : "Edit activity")
         .onAppear() {
             if let activity = self.activity {
                 self.title = activity.title

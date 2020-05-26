@@ -14,6 +14,8 @@
 		53A8FDAC247A261D00335317 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53A8FDAB247A261D00335317 /* Preview Assets.xcassets */; };
 		53A8FDAF247A261D00335317 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53A8FDAD247A261D00335317 /* LaunchScreen.storyboard */; };
 		53A8FDB7247CC6C500335317 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A8FDB6247CC6C500335317 /* User.swift */; };
+		53A8FDB9247CD06C00335317 /* SongsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A8FDB8247CD06C00335317 /* SongsView.swift */; };
+		53A8FDBB247CD98C00335317 /* DisabledForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A8FDBA247CD98C00335317 /* DisabledForm.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		53A8FDAE247A261D00335317 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		53A8FDB0247A261D00335317 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		53A8FDB6247CC6C500335317 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		53A8FDB8247CD06C00335317 /* SongsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsView.swift; sourceTree = "<group>"; };
+		53A8FDBA247CD98C00335317 /* DisabledForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisabledForm.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,8 @@
 				53A8FDA4247A261C00335317 /* SceneDelegate.swift */,
 				53A8FDA6247A261C00335317 /* ContentView.swift */,
 				53A8FDB6247CC6C500335317 /* User.swift */,
+				53A8FDB8247CD06C00335317 /* SongsView.swift */,
+				53A8FDBA247CD98C00335317 /* DisabledForm.swift */,
 				53A8FDA8247A261D00335317 /* Assets.xcassets */,
 				53A8FDAD247A261D00335317 /* LaunchScreen.storyboard */,
 				53A8FDB0247A261D00335317 /* Info.plist */,
@@ -152,6 +158,8 @@
 				53A8FDB7247CC6C500335317 /* User.swift in Sources */,
 				53A8FDA3247A261C00335317 /* AppDelegate.swift in Sources */,
 				53A8FDA5247A261C00335317 /* SceneDelegate.swift in Sources */,
+				53A8FDBB247CD98C00335317 /* DisabledForm.swift in Sources */,
+				53A8FDB9247CD06C00335317 /* SongsView.swift in Sources */,
 				53A8FDA7247A261C00335317 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

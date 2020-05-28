@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		53225372247E1625001EA622 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53225371247E1625001EA622 /* Order.swift */; };
 		53A8FDA3247A261C00335317 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A8FDA2247A261C00335317 /* AppDelegate.swift */; };
 		53A8FDA5247A261C00335317 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A8FDA4247A261C00335317 /* SceneDelegate.swift */; };
 		53A8FDA7247A261C00335317 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A8FDA6247A261C00335317 /* ContentView.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		53225371247E1625001EA622 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		53A8FD9F247A261C00335317 /* CupcakeCorner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CupcakeCorner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53A8FDA2247A261C00335317 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		53A8FDA4247A261C00335317 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 				53A8FDB6247CC6C500335317 /* User.swift */,
 				53A8FDB8247CD06C00335317 /* SongsView.swift */,
 				53A8FDBA247CD98C00335317 /* DisabledForm.swift */,
+				53225371247E1625001EA622 /* Order.swift */,
 				53A8FDA8247A261D00335317 /* Assets.xcassets */,
 				53A8FDAD247A261D00335317 /* LaunchScreen.storyboard */,
 				53A8FDB0247A261D00335317 /* Info.plist */,
@@ -161,6 +164,7 @@
 				53A8FDBB247CD98C00335317 /* DisabledForm.swift in Sources */,
 				53A8FDB9247CD06C00335317 /* SongsView.swift in Sources */,
 				53A8FDA7247A261C00335317 /* ContentView.swift in Sources */,
+				53225372247E1625001EA622 /* Order.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

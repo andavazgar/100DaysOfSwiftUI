@@ -32,13 +32,19 @@ struct ContentView: View {
                     }
                     
                     if order.specialRequestEnabled {
-                        Toggle(isOn: $order.$extraFrosting) {
+                        Toggle(isOn: $order.extraFrosting) {
                             Text("Add extra frosting")
                         }
                         
-                        Toggle(isOn: $order.$addSprinkles) {
+                        Toggle(isOn: $order.addSprinkles) {
                             Text("Add extra sprinkles")
                         }
+                    }
+                }
+                
+                Section {
+                    NavigationLink(destination: AddressView(order: order)) {
+                        Text("Delivery details")
                     }
                 }
             }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		53225372247E1625001EA622 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53225371247E1625001EA622 /* Order.swift */; };
+		532253742480C220001EA622 /* AddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532253732480C220001EA622 /* AddressView.swift */; };
 		53A8FDA3247A261C00335317 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A8FDA2247A261C00335317 /* AppDelegate.swift */; };
 		53A8FDA5247A261C00335317 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A8FDA4247A261C00335317 /* SceneDelegate.swift */; };
 		53A8FDA7247A261C00335317 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A8FDA6247A261C00335317 /* ContentView.swift */; };
@@ -17,10 +18,12 @@
 		53A8FDB7247CC6C500335317 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A8FDB6247CC6C500335317 /* User.swift */; };
 		53A8FDB9247CD06C00335317 /* SongsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A8FDB8247CD06C00335317 /* SongsView.swift */; };
 		53A8FDBB247CD98C00335317 /* DisabledForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A8FDBA247CD98C00335317 /* DisabledForm.swift */; };
+		53DB654524D0AD12004E399B /* CheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DB654424D0AD12004E399B /* CheckoutView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		53225371247E1625001EA622 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		532253732480C220001EA622 /* AddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressView.swift; sourceTree = "<group>"; };
 		53A8FD9F247A261C00335317 /* CupcakeCorner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CupcakeCorner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53A8FDA2247A261C00335317 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		53A8FDA4247A261C00335317 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -32,6 +35,7 @@
 		53A8FDB6247CC6C500335317 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		53A8FDB8247CD06C00335317 /* SongsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsView.swift; sourceTree = "<group>"; };
 		53A8FDBA247CD98C00335317 /* DisabledForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisabledForm.swift; sourceTree = "<group>"; };
+		53DB654424D0AD12004E399B /* CheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +71,8 @@
 				53A8FDA2247A261C00335317 /* AppDelegate.swift */,
 				53A8FDA4247A261C00335317 /* SceneDelegate.swift */,
 				53A8FDA6247A261C00335317 /* ContentView.swift */,
+				53DB654424D0AD12004E399B /* CheckoutView.swift */,
+				532253732480C220001EA622 /* AddressView.swift */,
 				53A8FDB6247CC6C500335317 /* User.swift */,
 				53A8FDB8247CD06C00335317 /* SongsView.swift */,
 				53A8FDBA247CD98C00335317 /* DisabledForm.swift */,
@@ -158,6 +164,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				532253742480C220001EA622 /* AddressView.swift in Sources */,
 				53A8FDB7247CC6C500335317 /* User.swift in Sources */,
 				53A8FDA3247A261C00335317 /* AppDelegate.swift in Sources */,
 				53A8FDA5247A261C00335317 /* SceneDelegate.swift in Sources */,
@@ -165,6 +172,7 @@
 				53A8FDB9247CD06C00335317 /* SongsView.swift in Sources */,
 				53A8FDA7247A261C00335317 /* ContentView.swift in Sources */,
 				53225372247E1625001EA622 /* Order.swift in Sources */,
+				53DB654524D0AD12004E399B /* CheckoutView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

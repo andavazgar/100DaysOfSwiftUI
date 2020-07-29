@@ -19,6 +19,8 @@
 		53A8FDB9247CD06C00335317 /* SongsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A8FDB8247CD06C00335317 /* SongsView.swift */; };
 		53A8FDBB247CD98C00335317 /* DisabledForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A8FDBA247CD98C00335317 /* DisabledForm.swift */; };
 		53DB654524D0AD12004E399B /* CheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DB654424D0AD12004E399B /* CheckoutView.swift */; };
+		53DB654724D106CE004E399B /* OrderClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DB654624D106CE004E399B /* OrderClass.swift */; };
+		53DB654924D10744004E399B /* OrderRef.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DB654824D10744004E399B /* OrderRef.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		53A8FDB8247CD06C00335317 /* SongsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsView.swift; sourceTree = "<group>"; };
 		53A8FDBA247CD98C00335317 /* DisabledForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisabledForm.swift; sourceTree = "<group>"; };
 		53DB654424D0AD12004E399B /* CheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutView.swift; sourceTree = "<group>"; };
+		53DB654624D106CE004E399B /* OrderClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderClass.swift; sourceTree = "<group>"; };
+		53DB654824D10744004E399B /* OrderRef.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderRef.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +81,8 @@
 				53A8FDB8247CD06C00335317 /* SongsView.swift */,
 				53A8FDBA247CD98C00335317 /* DisabledForm.swift */,
 				53225371247E1625001EA622 /* Order.swift */,
+				53DB654824D10744004E399B /* OrderRef.swift */,
+				53DB654624D106CE004E399B /* OrderClass.swift */,
 				53A8FDA8247A261D00335317 /* Assets.xcassets */,
 				53A8FDAD247A261D00335317 /* LaunchScreen.storyboard */,
 				53A8FDB0247A261D00335317 /* Info.plist */,
@@ -164,6 +170,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53DB654924D10744004E399B /* OrderRef.swift in Sources */,
 				532253742480C220001EA622 /* AddressView.swift in Sources */,
 				53A8FDB7247CC6C500335317 /* User.swift in Sources */,
 				53A8FDA3247A261C00335317 /* AppDelegate.swift in Sources */,
@@ -171,6 +178,7 @@
 				53A8FDBB247CD98C00335317 /* DisabledForm.swift in Sources */,
 				53A8FDB9247CD06C00335317 /* SongsView.swift in Sources */,
 				53A8FDA7247A261C00335317 /* ContentView.swift in Sources */,
+				53DB654724D106CE004E399B /* OrderClass.swift in Sources */,
 				53225372247E1625001EA622 /* Order.swift in Sources */,
 				53DB654524D0AD12004E399B /* CheckoutView.swift in Sources */,
 			);

@@ -8,10 +8,15 @@
 
 import SwiftUI
 
+struct AlertObj {
+    var title = ""
+    var message = ""
+}
+
 struct CheckoutView: View {
-    @ObservedObject var order: Order
-    @State private var confirmationMessage = ""
-    @State private var showingConfirmation = false
+    @ObservedObject var orderRef: OrderRef
+    @State private var alertObj = AlertObj()
+    @State private var showingAlert = false
     
     var body: some View {
         GeometryReader { geo in
@@ -22,7 +27,7 @@ struct CheckoutView: View {
                         .scaledToFit()
                         .frame(width: geo.size.width)
                     
-                    Text("Your total is $\(self.order.cost, specifier: "%.2f")")
+                    Text("Your total is $\(self.orderRef.order.cost, specifier: "%.2f")")
                         .font(.title)
                     
                     Button("Place order") {
@@ -33,13 +38,13 @@ struct CheckoutView: View {
             }
         }
         .navigationBarTitle("Check out", displayMode: .inline)
-        .alert(isPresented: $showingConfirmation) {
-            Alert(title: Text("Thank you!"), message: Text(self.confirmationMessage), dismissButton: .default(Text("OK")))
+        .alert(isPresented: $showingAlert) {
+            Alert(title: Text(self.alertObj.title), message: Text(self.alertObj.message), dismissButton: .default(Text("OK")))
         }
     }
     
     private func placeOrder() {
-        guard let encodedOrder = try? JSONEncoder().encode(order) else {
+        guard let encodedOrder = try? JSONEncoder().encode(orderRef.order) else {
             print("Failed to encode the order")
             return
         }
@@ -52,13 +57,16 @@ struct CheckoutView: View {
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data else {
-                print("No data in response: \(error?.localizedDescription ?? "Unknown error").")
+                self.alertObj.title = "Error"
+                self.alertObj.message = "\(error?.localizedDescription ?? "No data received from the server. Check your internet connection.")"
+                self.showingAlert = true
                 return
             }
             
             if let decodedOrder = try? JSONDecoder().decode(Order.self, from: data) {
-                self.confirmationMessage = "Your order for \(decodedOrder.quantity)x \(Order.types[decodedOrder.type].lowercased()) cupcakes is on its way!"
-                self.showingConfirmation = true
+                self.alertObj.title = "Thank you!"
+                self.alertObj.message = "Your order for \(decodedOrder.quantity)x \(Order.types[decodedOrder.type].lowercased()) cupcakes is on its way!"
+                self.showingAlert = true
             } else {
                 print("Invalid response from server")
             }
@@ -70,7 +78,7 @@ struct CheckoutView: View {
 struct CheckoutView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            CheckoutView(order: Order())
+            CheckoutView(orderRef: OrderRef())
         }
     }
 }

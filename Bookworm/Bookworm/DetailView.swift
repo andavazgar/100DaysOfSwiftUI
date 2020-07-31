@@ -15,15 +15,21 @@ struct DetailView: View {
     @State private var showingDeleteAlert = false
     
     let book: Book
+    var formattedReviewDate: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy/MM/dd hh:mm a"
+        
+        return dateFormatter.string(from: book.reviewDate ?? Date())
+    }
     
     var body: some View {
         VStack {
             ZStack(alignment: .bottomTrailing) {
-                Image(book.genre ?? "Fantasy")
+                Image(book.genre ?? "Unknown")
                     .resizable()
                     .scaledToFit()
                 
-                Text(book.genre?.uppercased() ?? "FANTASY")
+                Text(book.genre != nil && book.genre != "Unknown" ? book.genre!.uppercased() : "UNKNOWN GENRE")
                     .font(.caption)
                     .fontWeight(.black)
                     .padding(8)
@@ -42,6 +48,10 @@ struct DetailView: View {
             
             RatingView(rating: .constant(Int(book.rating)))
                 .font(.title)
+            
+            Text(book.reviewDate != nil ? formattedReviewDate : "")
+                .foregroundColor(.secondary)
+                .padding()
             
             Spacer()
         }

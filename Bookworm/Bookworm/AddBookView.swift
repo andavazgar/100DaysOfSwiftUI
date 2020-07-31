@@ -41,13 +41,20 @@ struct AddBookView: View {
                 Section {
                     Button("Save") {
                         let book = Book(context: self.moc)
+                        book.id = UUID()
                         book.title = self.title
                         book.author = self.author
                         book.rating = Int16(self.rating)
-                        book.genre = self.genre
+                        book.genre = !self.genre.isEmpty ? self.genre : "Unknown"
                         book.review = self.review
+                        book.reviewDate = Date()
                         
-                        try? self.moc.save()
+                        do {
+                            try self.moc.save()
+                        } catch {
+                            print(error)
+                        }
+                        
                         self.presentationMode.wrappedValue.dismiss()
                     }
                 }

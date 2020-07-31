@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		53A7EE8524D38520008DF876 /* AddBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A7EE8424D38520008DF876 /* AddBookView.swift */; };
+		53A7EE8724D39DB3008DF876 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A7EE8624D39DB3008DF876 /* RatingView.swift */; };
+		53A7EE8924D3A65B008DF876 /* EmojiRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A7EE8824D3A65B008DF876 /* EmojiRatingView.swift */; };
 		53E12A4F24D1BE0A00381725 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E12A4E24D1BE0A00381725 /* AppDelegate.swift */; };
 		53E12A5124D1BE0A00381725 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E12A5024D1BE0A00381725 /* SceneDelegate.swift */; };
 		53E12A5424D1BE0A00381725 /* Bookworm.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 53E12A5224D1BE0A00381725 /* Bookworm.xcdatamodeld */; };
@@ -14,12 +17,12 @@
 		53E12A5824D1BE0D00381725 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53E12A5724D1BE0D00381725 /* Assets.xcassets */; };
 		53E12A5B24D1BE0D00381725 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53E12A5A24D1BE0D00381725 /* Preview Assets.xcassets */; };
 		53E12A5E24D1BE0D00381725 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53E12A5C24D1BE0D00381725 /* LaunchScreen.storyboard */; };
-		53E12A6624D1D0DF00381725 /* BindingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E12A6524D1D0DF00381725 /* BindingView.swift */; };
-		53E12A6824D1D1A400381725 /* SizeClassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E12A6724D1D1A400381725 /* SizeClassView.swift */; };
-		53E12A6A24D20D9500381725 /* CoreDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E12A6924D20D9500381725 /* CoreDataView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		53A7EE8424D38520008DF876 /* AddBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookView.swift; sourceTree = "<group>"; };
+		53A7EE8624D39DB3008DF876 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
+		53A7EE8824D3A65B008DF876 /* EmojiRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiRatingView.swift; sourceTree = "<group>"; };
 		53E12A4B24D1BE0A00381725 /* Bookworm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bookworm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53E12A4E24D1BE0A00381725 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		53E12A5024D1BE0A00381725 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -29,9 +32,6 @@
 		53E12A5A24D1BE0D00381725 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		53E12A5D24D1BE0D00381725 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		53E12A5F24D1BE0D00381725 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		53E12A6524D1D0DF00381725 /* BindingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingView.swift; sourceTree = "<group>"; };
-		53E12A6724D1D1A400381725 /* SizeClassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeClassView.swift; sourceTree = "<group>"; };
-		53E12A6924D20D9500381725 /* CoreDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,9 +67,9 @@
 				53E12A4E24D1BE0A00381725 /* AppDelegate.swift */,
 				53E12A5024D1BE0A00381725 /* SceneDelegate.swift */,
 				53E12A5524D1BE0A00381725 /* ContentView.swift */,
-				53E12A6924D20D9500381725 /* CoreDataView.swift */,
-				53E12A6524D1D0DF00381725 /* BindingView.swift */,
-				53E12A6724D1D1A400381725 /* SizeClassView.swift */,
+				53A7EE8624D39DB3008DF876 /* RatingView.swift */,
+				53A7EE8824D3A65B008DF876 /* EmojiRatingView.swift */,
+				53A7EE8424D38520008DF876 /* AddBookView.swift */,
 				53E12A5724D1BE0D00381725 /* Assets.xcassets */,
 				53E12A5C24D1BE0D00381725 /* LaunchScreen.storyboard */,
 				53E12A5F24D1BE0D00381725 /* Info.plist */,
@@ -158,13 +158,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				53E12A6824D1D1A400381725 /* SizeClassView.swift in Sources */,
 				53E12A4F24D1BE0A00381725 /* AppDelegate.swift in Sources */,
 				53E12A5424D1BE0A00381725 /* Bookworm.xcdatamodeld in Sources */,
-				53E12A6624D1D0DF00381725 /* BindingView.swift in Sources */,
+				53A7EE8924D3A65B008DF876 /* EmojiRatingView.swift in Sources */,
 				53E12A5624D1BE0A00381725 /* ContentView.swift in Sources */,
+				53A7EE8724D39DB3008DF876 /* RatingView.swift in Sources */,
 				53E12A5124D1BE0A00381725 /* SceneDelegate.swift in Sources */,
-				53E12A6A24D20D9500381725 /* CoreDataView.swift in Sources */,
+				53A7EE8524D38520008DF876 /* AddBookView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

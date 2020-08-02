@@ -14,7 +14,7 @@ This project dives deep into the fundamental building blocks of any SwiftUI app:
 - Views as properties
 - View composition
 - Custom modifiers
-- Custom containers
+- Custom containers using `@ViewBuilder` and `@escaping` closure
 
 
 ## Challenges

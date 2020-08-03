@@ -14,8 +14,14 @@
 		5301C5E824D4B46D005E1594 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5301C5E724D4B46D005E1594 /* Assets.xcassets */; };
 		5301C5EB24D4B46D005E1594 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5301C5EA24D4B46D005E1594 /* Preview Assets.xcassets */; };
 		5301C5EE24D4B46D005E1594 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5301C5EC24D4B46D005E1594 /* LaunchScreen.storyboard */; };
-		5301C5FF24D4E4F5005E1594 /* Movie+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5301C5FD24D4E4F5005E1594 /* Movie+CoreDataClass.swift */; };
-		5301C60024D4E4F5005E1594 /* Movie+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5301C5FE24D4E4F5005E1594 /* Movie+CoreDataProperties.swift */; };
+		53D08AEA24D6FF7F0095F779 /* MoviesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D08AE924D6FF7F0095F779 /* MoviesView.swift */; };
+		53D08AEC24D6FFC00095F779 /* ShipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D08AEB24D6FFC00095F779 /* ShipsView.swift */; };
+		53D08AEE24D790550095F779 /* FilteredList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D08AED24D790550095F779 /* FilteredList.swift */; };
+		53D08B1E24D85B7E0095F779 /* Ship+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D08B1624D85B7E0095F779 /* Ship+CoreDataClass.swift */; };
+		53D08B2024D85B7E0095F779 /* Country+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D08B1824D85B7E0095F779 /* Country+CoreDataClass.swift */; };
+		53D08B2224D85B7E0095F779 /* Movie+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D08B1A24D85B7E0095F779 /* Movie+CoreDataClass.swift */; };
+		53D08B2424D85B7E0095F779 /* Candy+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D08B1C24D85B7E0095F779 /* Candy+CoreDataClass.swift */; };
+		53D08B2724D85D960095F779 /* CandyCountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D08B2624D85D960095F779 /* CandyCountryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,8 +34,14 @@
 		5301C5EA24D4B46D005E1594 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5301C5ED24D4B46D005E1594 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5301C5EF24D4B46D005E1594 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5301C5FD24D4E4F5005E1594 /* Movie+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Movie+CoreDataClass.swift"; sourceTree = "<group>"; };
-		5301C5FE24D4E4F5005E1594 /* Movie+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Movie+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		53D08AE924D6FF7F0095F779 /* MoviesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesView.swift; sourceTree = "<group>"; };
+		53D08AEB24D6FFC00095F779 /* ShipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShipsView.swift; sourceTree = "<group>"; };
+		53D08AED24D790550095F779 /* FilteredList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredList.swift; sourceTree = "<group>"; };
+		53D08B1624D85B7E0095F779 /* Ship+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ship+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		53D08B1824D85B7E0095F779 /* Country+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Country+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		53D08B1A24D85B7E0095F779 /* Movie+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Movie+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		53D08B1C24D85B7E0095F779 /* Candy+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Candy+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		53D08B2624D85D960095F779 /* CandyCountryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandyCountryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,11 +74,14 @@
 		5301C5DD24D4B46A005E1594 /* CoreDataProject */ = {
 			isa = PBXGroup;
 			children = (
-				5301C5FD24D4E4F5005E1594 /* Movie+CoreDataClass.swift */,
-				5301C5FE24D4E4F5005E1594 /* Movie+CoreDataProperties.swift */,
+				53D08AF724D8318C0095F779 /* Models */,
 				5301C5DE24D4B46A005E1594 /* AppDelegate.swift */,
 				5301C5E024D4B46A005E1594 /* SceneDelegate.swift */,
 				5301C5E524D4B46A005E1594 /* ContentView.swift */,
+				53D08B2624D85D960095F779 /* CandyCountryView.swift */,
+				53D08AEB24D6FFC00095F779 /* ShipsView.swift */,
+				53D08AED24D790550095F779 /* FilteredList.swift */,
+				53D08AE924D6FF7F0095F779 /* MoviesView.swift */,
 				5301C5E724D4B46D005E1594 /* Assets.xcassets */,
 				5301C5EC24D4B46D005E1594 /* LaunchScreen.storyboard */,
 				5301C5EF24D4B46D005E1594 /* Info.plist */,
@@ -82,6 +97,17 @@
 				5301C5EA24D4B46D005E1594 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		53D08AF724D8318C0095F779 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				53D08B1624D85B7E0095F779 /* Ship+CoreDataClass.swift */,
+				53D08B1824D85B7E0095F779 /* Country+CoreDataClass.swift */,
+				53D08B1A24D85B7E0095F779 /* Movie+CoreDataClass.swift */,
+				53D08B1C24D85B7E0095F779 /* Candy+CoreDataClass.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,11 +182,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				5301C5DF24D4B46A005E1594 /* AppDelegate.swift in Sources */,
+				53D08B2424D85B7E0095F779 /* Candy+CoreDataClass.swift in Sources */,
 				5301C5E124D4B46A005E1594 /* SceneDelegate.swift in Sources */,
+				53D08AEE24D790550095F779 /* FilteredList.swift in Sources */,
+				53D08B1E24D85B7E0095F779 /* Ship+CoreDataClass.swift in Sources */,
 				5301C5E624D4B46A005E1594 /* ContentView.swift in Sources */,
-				5301C5FF24D4E4F5005E1594 /* Movie+CoreDataClass.swift in Sources */,
-				5301C60024D4E4F5005E1594 /* Movie+CoreDataProperties.swift in Sources */,
+				53D08B2024D85B7E0095F779 /* Country+CoreDataClass.swift in Sources */,
+				53D08AEC24D6FFC00095F779 /* ShipsView.swift in Sources */,
+				53D08AEA24D6FF7F0095F779 /* MoviesView.swift in Sources */,
 				5301C5E424D4B46A005E1594 /* CoreDataProject.xcdatamodeld in Sources */,
+				53D08B2224D85B7E0095F779 /* Movie+CoreDataClass.swift in Sources */,
+				53D08B2724D85D960095F779 /* CandyCountryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

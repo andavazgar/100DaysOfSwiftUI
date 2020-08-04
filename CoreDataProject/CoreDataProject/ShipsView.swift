@@ -14,7 +14,7 @@ struct ShipsView: View {
     
     var body: some View {
         VStack {
-            FilteredList(filterKey: "universe", filterValue: universeFilter) { (ship: Ship) in
+            FilteredList(predicate: .equal, filterKey: "universe", filterValue: universeFilter) { (ship: Ship) in
                 Text(ship.name ?? "Unknown ship")
             }
             Button("Add Examples") {
@@ -54,7 +54,9 @@ struct ShipsView: View {
 }
 
 struct ShipsView_Previews: PreviewProvider {
+    static var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     static var previews: some View {
-        ShipsView()
+        ShipsView().environment(\.managedObjectContext, context)
     }
 }

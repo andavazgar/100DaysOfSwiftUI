@@ -19,13 +19,26 @@ struct FilteredList<T: NSManagedObject, Content: View>: View {
         }
     }
     
-    init(filterKey: String?, filterValue: String?, @ViewBuilder content: @escaping (T) -> Content) {
+    init(predicate: Predicate = .equal, filterKey: String?, filterValue: String?, sortDescriptors: [NSSortDescriptor] = [], @ViewBuilder content: @escaping (T) -> Content) {
         if let filterKey = filterKey, let filterValue = filterValue {
-        fetchRequest = FetchRequest(entity: T.entity(), sortDescriptors: [], predicate: NSPredicate(format: "%K == %@", filterKey, filterValue))
+            fetchRequest = FetchRequest(entity: T.entity(), sortDescriptors: sortDescriptors, predicate: NSPredicate(format: "%K \(predicate.rawValue) %@", filterKey, filterValue))
         } else {
             fetchRequest = FetchRequest(entity: T.entity(), sortDescriptors: [])
         }
         
         self.content = content
     }
+}
+
+enum Predicate: String {
+    case equal = "=="
+    case notEqual = "!="
+    case lessThan = "<"
+    case moreThan = ">"
+    case lessThanOrEqual = "<="
+    case moreThanOrEqual = ">="
+    case beginsWith = "BEGINSWITH"
+    case beginsWithIgnoringCase = "BEGINSWITH[c]"
+    case contains = "CONTAINS"
+    case containsIgnoringCase = "CONTAINS[c]"
 }

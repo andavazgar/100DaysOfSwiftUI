@@ -10,12 +10,13 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        CandyCountryView()
+        ShipsView()
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     static var previews: some View {
         ContentView().environment(\.managedObjectContext, context)
     }

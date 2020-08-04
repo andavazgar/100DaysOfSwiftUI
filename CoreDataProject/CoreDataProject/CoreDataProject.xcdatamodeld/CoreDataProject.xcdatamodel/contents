@@ -27,6 +27,12 @@
     <entity name="Ship" representedClassName="Ship" syncable="YES" codeGenerationType="category">
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="universe" optional="YES" attributeType="String"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="name"/>
+                <constraint value="universe"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <elements>
         <element name="Candy" positionX="-11.40234375" positionY="129.54296875" width="128" height="73"/>

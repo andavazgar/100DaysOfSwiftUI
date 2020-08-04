@@ -12,5 +12,11 @@ import CoreData
 
 @objc(Ship)
 public class Ship: NSManagedObject {
-
+    var nameValue: String {
+        self.name ?? "Unknown ship"
+    }
+    
+    var universeValue: String {
+        self.universe ?? "Unknown universe"
+    }
 }

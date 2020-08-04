@@ -35,6 +35,7 @@ struct MoviesView: View {
                 }
             }
         }
+        .navigationBarTitle("Movies")
     }
 }
 

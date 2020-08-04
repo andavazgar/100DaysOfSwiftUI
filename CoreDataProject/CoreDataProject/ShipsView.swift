@@ -14,8 +14,15 @@ struct ShipsView: View {
     
     var body: some View {
         VStack {
-            FilteredList(predicate: .equal, filterKey: "universe", filterValue: universeFilter) { (ship: Ship) in
-                Text(ship.name ?? "Unknown ship")
+            FilteredList(predicate: .equal, filterKey: "universe", filterValue: universeFilter, sortDescriptors: [NSSortDescriptor(keyPath: \Ship.name, ascending: true)]) { (ship: Ship) in
+                VStack(alignment: .leading) {
+                    Text(ship.nameValue)
+                        .font(.headline)
+                    
+                    Text(ship.universeValue)
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                }
             }
             Button("Add Examples") {
                 let ship1 = Ship(context: self.moc)
@@ -50,6 +57,7 @@ struct ShipsView: View {
             }
             .padding([.horizontal], 16)
         }
+        .navigationBarTitle("Ships")
     }
 }
 

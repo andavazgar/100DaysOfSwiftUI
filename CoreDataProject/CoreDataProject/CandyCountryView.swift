@@ -56,6 +56,7 @@ struct CandyCountryView: View {
                 }
             }
         }
+        .navigationBarTitle("Candies")
     }
 }
 

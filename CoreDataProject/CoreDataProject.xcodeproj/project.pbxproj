@@ -37,10 +37,10 @@
 		53D08AE924D6FF7F0095F779 /* MoviesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesView.swift; sourceTree = "<group>"; };
 		53D08AEB24D6FFC00095F779 /* ShipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShipsView.swift; sourceTree = "<group>"; };
 		53D08AED24D790550095F779 /* FilteredList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredList.swift; sourceTree = "<group>"; };
-		53D08B1624D85B7E0095F779 /* Ship+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ship+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		53D08B1824D85B7E0095F779 /* Country+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Country+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		53D08B1A24D85B7E0095F779 /* Movie+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Movie+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		53D08B1C24D85B7E0095F779 /* Candy+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Candy+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		53D08B1624D85B7E0095F779 /* Ship+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Ship+CoreDataClass.swift"; path = "CoreDataProject/Models/Ship+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		53D08B1824D85B7E0095F779 /* Country+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Country+CoreDataClass.swift"; path = "CoreDataProject/Models/Country+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		53D08B1A24D85B7E0095F779 /* Movie+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Movie+CoreDataClass.swift"; path = "CoreDataProject/Models/Movie+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		53D08B1C24D85B7E0095F779 /* Candy+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Candy+CoreDataClass.swift"; path = "CoreDataProject/Models/Candy+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		53D08B2624D85D960095F779 /* CandyCountryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandyCountryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 

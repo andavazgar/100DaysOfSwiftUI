@@ -13,14 +13,12 @@
 		5303125B24DB14BF0064A969 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5303125A24DB14BF0064A969 /* Assets.xcassets */; };
 		5303125E24DB14BF0064A969 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5303125D24DB14BF0064A969 /* Preview Assets.xcassets */; };
 		5303126124DB14BF0064A969 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5303125F24DB14BF0064A969 /* LaunchScreen.storyboard */; };
-		5303126B24DB15400064A969 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5303126A24DB15400064A969 /* User.swift */; };
-		5303126D24DB16030064A969 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5303126C24DB16030064A969 /* Friend.swift */; };
 		5303127024DB43920064A969 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5303126F24DB43920064A969 /* DetailView.swift */; };
 		531EBC4524DCA992007734F9 /* Friendface.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 531EBC4324DCA992007734F9 /* Friendface.xcdatamodeld */; };
 		531EBC4A24DCAB78007734F9 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531EBC4624DCAB78007734F9 /* User+CoreDataClass.swift */; };
 		531EBC4C24DCAB78007734F9 /* Friend+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531EBC4824DCAB78007734F9 /* Friend+CoreDataClass.swift */; };
 		531EBC4F24DCED87007734F9 /* CodingUserInfoKey-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531EBC4E24DCED87007734F9 /* CodingUserInfoKey-Extension.swift */; };
-		53EFB60924DB6C6400BB51A1 /* GlobalEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EFB60824DB6C6400BB51A1 /* GlobalEnvironment.swift */; };
+		532C50FD24DDB01B00B32E8D /* JSONDecoder-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532C50FC24DDB01B00B32E8D /* JSONDecoder-Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,14 +30,12 @@
 		5303125D24DB14BF0064A969 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5303126024DB14BF0064A969 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5303126224DB14BF0064A969 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5303126A24DB15400064A969 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		5303126C24DB16030064A969 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		5303126F24DB43920064A969 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		531EBC4424DCA992007734F9 /* Friendface.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Friendface.xcdatamodel; sourceTree = "<group>"; };
 		531EBC4624DCAB78007734F9 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
 		531EBC4824DCAB78007734F9 /* Friend+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Friend+CoreDataClass.swift"; sourceTree = "<group>"; };
 		531EBC4E24DCED87007734F9 /* CodingUserInfoKey-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CodingUserInfoKey-Extension.swift"; sourceTree = "<group>"; };
-		53EFB60824DB6C6400BB51A1 /* GlobalEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalEnvironment.swift; sourceTree = "<group>"; };
+		532C50FC24DDB01B00B32E8D /* JSONDecoder-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder-Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,10 +70,10 @@
 			children = (
 				5303126E24DB167D0064A969 /* Models */,
 				5303125424DB14BD0064A969 /* AppDelegate.swift */,
-				531EBC4E24DCED87007734F9 /* CodingUserInfoKey-Extension.swift */,
 				5303125624DB14BD0064A969 /* SceneDelegate.swift */,
+				532C50FC24DDB01B00B32E8D /* JSONDecoder-Extension.swift */,
+				531EBC4E24DCED87007734F9 /* CodingUserInfoKey-Extension.swift */,
 				5303125824DB14BD0064A969 /* ContentView.swift */,
-				53EFB60824DB6C6400BB51A1 /* GlobalEnvironment.swift */,
 				5303126F24DB43920064A969 /* DetailView.swift */,
 				531EBC4324DCA992007734F9 /* Friendface.xcdatamodeld */,
 				5303125A24DB14BF0064A969 /* Assets.xcassets */,
@@ -101,8 +97,6 @@
 			children = (
 				531EBC4624DCAB78007734F9 /* User+CoreDataClass.swift */,
 				531EBC4824DCAB78007734F9 /* Friend+CoreDataClass.swift */,
-				5303126A24DB15400064A969 /* User.swift */,
-				5303126C24DB16030064A969 /* Friend.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -178,15 +172,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				53EFB60924DB6C6400BB51A1 /* GlobalEnvironment.swift in Sources */,
 				5303125524DB14BD0064A969 /* AppDelegate.swift in Sources */,
 				5303127024DB43920064A969 /* DetailView.swift in Sources */,
 				531EBC4C24DCAB78007734F9 /* Friend+CoreDataClass.swift in Sources */,
 				5303125724DB14BD0064A969 /* SceneDelegate.swift in Sources */,
-				5303126D24DB16030064A969 /* Friend.swift in Sources */,
 				531EBC4F24DCED87007734F9 /* CodingUserInfoKey-Extension.swift in Sources */,
 				531EBC4A24DCAB78007734F9 /* User+CoreDataClass.swift in Sources */,
-				5303126B24DB15400064A969 /* User.swift in Sources */,
+				532C50FD24DDB01B00B32E8D /* JSONDecoder-Extension.swift in Sources */,
 				531EBC4524DCA992007734F9 /* Friendface.xcdatamodeld in Sources */,
 				5303125924DB14BD0064A969 /* ContentView.swift in Sources */,
 			);

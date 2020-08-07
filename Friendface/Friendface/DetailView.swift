@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct DetailView: View {
-    @EnvironmentObject var env: GlobalEnvironment
+    @FetchRequest(entity: User.entity(), sortDescriptors: []) var users: FetchedResults<User>
     var user: User
     
     var body: some View {
@@ -35,7 +35,7 @@ struct DetailView: View {
             
             Section(header: Text("Friends").font(.headline)) {
                 ForEach(user.friendsValue) { friend in
-                    NavigationLink(destination: DetailView(user: self.findUser(withId: friend.idValue))) {
+                    NavigationLink(destination: DetailView(user: self.findUser(withId: friend.id))) {
                         Text(friend.nameValue)
                     }
                 }
@@ -44,8 +44,8 @@ struct DetailView: View {
         .navigationBarTitle(Text(user.nameValue), displayMode: .inline)
     }
     
-    private func findUser(withId id: UUID) -> User {
-        return env.users.first { $0.id == id }!
+    private func findUser(withId id: UUID?) -> User {
+        return users.first { $0.id == id }!
     }
 }
 

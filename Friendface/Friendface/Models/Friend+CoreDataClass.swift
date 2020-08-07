@@ -11,7 +11,7 @@ import Foundation
 import CoreData
 
 @objc(Friend)
-public class Friend: NSManagedObject, Decodable {
+public class Friend: NSManagedObject, Decodable, Identifiable {
     var nameValue: String {
         self.name ?? "Unknown name"
     }
@@ -22,13 +22,12 @@ public class Friend: NSManagedObject, Decodable {
     }
     
     public required convenience init(from decoder: Decoder) throws {
-        guard let codingUserInfoKeyManagedObjectContext = CodingUserInfoKey.managedObjectContext,
-            let managedObjectContext = decoder.userInfo[codingUserInfoKeyManagedObjectContext] as? NSManagedObjectContext,
-            let entity = NSEntityDescription.entity(forEntityName: "Friend", in: managedObjectContext) else {
+        guard let codingUserInfoKeyContext = CodingUserInfoKey.managedObjectContext,
+            let managedObjectContext = decoder.userInfo[codingUserInfoKeyContext] as? NSManagedObjectContext else {
             fatalError("Failed to decode Friend")
         }
-
-        self.init(entity: entity, insertInto: managedObjectContext)
+        
+        self.init(context: managedObjectContext)
         
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decode(UUID.self, forKey: .id)

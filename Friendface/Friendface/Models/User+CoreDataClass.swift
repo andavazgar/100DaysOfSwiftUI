@@ -39,18 +39,17 @@ public class User: NSManagedObject, Decodable, Identifiable {
         return friendsSet.sorted { $0.nameValue < $1.nameValue }
     }
     
-    enum CodingKeys: String, CodingKey {
+    enum CodingKeys: CodingKey {
         case id, isActive, name, age, company, email, address, about, registered, tags, friends
     }
     
     public required convenience init(from decoder: Decoder) throws {
-        guard let codingUserInfoKeyManagedObjectContext = CodingUserInfoKey.managedObjectContext,
-            let managedObjectContext = decoder.userInfo[codingUserInfoKeyManagedObjectContext] as? NSManagedObjectContext,
-            let entity = NSEntityDescription.entity(forEntityName: "User", in: managedObjectContext) else {
+        guard let codingUserInfoKeyContext = CodingUserInfoKey.managedObjectContext,
+            let managedObjectContext = decoder.userInfo[codingUserInfoKeyContext] as? NSManagedObjectContext else {
             fatalError("Failed to decode User")
         }
-
-        self.init(entity: entity, insertInto: managedObjectContext)
+        
+        self.init(context: managedObjectContext)
         
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decode(UUID.self, forKey: .id)

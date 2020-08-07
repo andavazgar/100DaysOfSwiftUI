@@ -9,11 +9,14 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject var env: GlobalEnvironment
+    @Environment(\.managedObjectContext) var context
+    @FetchRequest(entity: User.entity(), sortDescriptors: [
+        NSSortDescriptor(keyPath: \User.name, ascending: true)
+    ]) var users: FetchedResults<User>
     
     var body: some View {
         NavigationView {
-            List(env.users) { (user: User) in
+            List(users) { (user: User) in
                 NavigationLink(destination: DetailView(user: user)) {
                     HStack {
                         VStack(alignment: .leading) {
@@ -40,27 +43,26 @@ struct ContentView: View {
     }
     
     private func fetchUsers() {
-        let url = URL(string: "https://www.hackingwithswift.com/samples/friendface.json")!
-        
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
-            if let data = data {
-                do {
-                    let decoder = JSONDecoder()
-                    decoder.dateDecodingStrategy = .iso8601
-                    
-                    let decodedUsers = try decoder.decode([User].self, from: data)
-                    
-                    DispatchQueue.main.async {
-                        self.env.users = decodedUsers
+        if users.isEmpty {
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .iso8601
+            decoder.userInfo[CodingUserInfoKey.managedObjectContext!] = context
+            
+            decoder.decode([User].self, fromURL: "https://www.hackingwithswift.com/samples/friendface.json") { result in
+                switch result {
+                case .success(_):
+                    if self.context.hasChanges {
+                        do {
+                            try self.context.save()
+                        } catch {
+                            print(error.localizedDescription)
+                        }
                     }
-                    return
-                } catch {
-                    print("Error decoding users:", error)
+                case .failure(let error):
+                    print(error.localizedDescription)
                 }
             }
-            
-            print("Error fetching users:", error?.localizedDescription ?? "")
-        }.resume()
+        }
     }
 }
 

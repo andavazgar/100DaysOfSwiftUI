@@ -17,15 +17,15 @@ struct ContentView: View {
                 NavigationLink(destination: DetailView(user: user)) {
                     HStack {
                         VStack(alignment: .leading) {
-                            Text(user.name)
+                            Text(user.nameValue)
                                 .font(.headline)
                             
-                            Text(user.email)
+                            Text(user.emailValue)
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
                         }
                         Spacer()
-                        Text("[\(user.friends.count)]")
+                        Text("[\(user.friendsValue.count)]")
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                     }

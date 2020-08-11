@@ -13,7 +13,7 @@ struct ImagePicker: UIViewControllerRepresentable {
     @Environment(\.presentationMode) var presentationMode
     
     class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-        var parent: ImagePicker
+        let parent: ImagePicker
         
         init(_ parent: ImagePicker) {
             self.parent = parent

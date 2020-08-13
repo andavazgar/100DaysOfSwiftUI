@@ -46,15 +46,18 @@ struct ContentView: View {
             set: {
                 self.filterIntensity = $0
                 self.applyProcessing()
-            })
+            }
+        )
         
         let radiusBinding = Binding(
             get: {
                 self.filterRadius
-        }, set: {
-            self.filterRadius = $0
-            self.applyProcessing()
-        })
+            },
+            set: {
+                self.filterRadius = $0
+                self.applyProcessing()
+            }
+        )
         
         let scaleBinding = Binding(
             get: {
@@ -63,7 +66,7 @@ struct ContentView: View {
             set: {
                 self.filterScale = $0
                 self.applyProcessing()
-        }
+            }
         )
         
         return NavigationView {

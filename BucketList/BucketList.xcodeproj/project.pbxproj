@@ -13,11 +13,7 @@
 		5316B5FF24E6376400F12814 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5316B5FE24E6376400F12814 /* Assets.xcassets */; };
 		5316B60224E6376400F12814 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5316B60124E6376400F12814 /* Preview Assets.xcassets */; };
 		5316B60524E6376400F12814 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5316B60324E6376400F12814 /* LaunchScreen.storyboard */; };
-		53F69CBF24E6F914006AC041 /* FileManager-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F69CBE24E6F914006AC041 /* FileManager-Extension.swift */; };
-		53F69CC124E700AF006AC041 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F69CC024E700AF006AC041 /* MapView.swift */; };
-		53F69CC324E70156006AC041 /* MapContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F69CC224E70156006AC041 /* MapContentView.swift */; };
-		53F69CC524E70180006AC041 /* WriteReadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F69CC424E70180006AC041 /* WriteReadView.swift */; };
-		53F69CC724E77510006AC041 /* BiometricsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F69CC624E77510006AC041 /* BiometricsView.swift */; };
+		53F69CC924E77F0B006AC041 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F69CC824E77F0B006AC041 /* MapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,11 +25,7 @@
 		5316B60124E6376400F12814 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5316B60424E6376400F12814 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5316B60624E6376400F12814 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		53F69CBE24E6F914006AC041 /* FileManager-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager-Extension.swift"; sourceTree = "<group>"; };
-		53F69CC024E700AF006AC041 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		53F69CC224E70156006AC041 /* MapContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapContentView.swift; sourceTree = "<group>"; };
-		53F69CC424E70180006AC041 /* WriteReadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteReadView.swift; sourceTree = "<group>"; };
-		53F69CC624E77510006AC041 /* BiometricsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricsView.swift; sourceTree = "<group>"; };
+		53F69CC824E77F0B006AC041 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,11 +61,7 @@
 				5316B5F824E6376000F12814 /* AppDelegate.swift */,
 				5316B5FA24E6376000F12814 /* SceneDelegate.swift */,
 				5316B5FC24E6376000F12814 /* ContentView.swift */,
-				53F69CC424E70180006AC041 /* WriteReadView.swift */,
-				53F69CC224E70156006AC041 /* MapContentView.swift */,
-				53F69CC024E700AF006AC041 /* MapView.swift */,
-				53F69CC624E77510006AC041 /* BiometricsView.swift */,
-				53F69CBE24E6F914006AC041 /* FileManager-Extension.swift */,
+				53F69CC824E77F0B006AC041 /* MapView.swift */,
 				5316B5FE24E6376400F12814 /* Assets.xcassets */,
 				5316B60324E6376400F12814 /* LaunchScreen.storyboard */,
 				5316B60624E6376400F12814 /* Info.plist */,
@@ -162,13 +150,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5316B5F924E6376000F12814 /* AppDelegate.swift in Sources */,
+				53F69CC924E77F0B006AC041 /* MapView.swift in Sources */,
 				5316B5FB24E6376000F12814 /* SceneDelegate.swift in Sources */,
-				53F69CC124E700AF006AC041 /* MapView.swift in Sources */,
-				53F69CC724E77510006AC041 /* BiometricsView.swift in Sources */,
-				53F69CC324E70156006AC041 /* MapContentView.swift in Sources */,
 				5316B5FD24E6376000F12814 /* ContentView.swift in Sources */,
-				53F69CBF24E6F914006AC041 /* FileManager-Extension.swift in Sources */,
-				53F69CC524E70180006AC041 /* WriteReadView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

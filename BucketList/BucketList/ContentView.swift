@@ -7,51 +7,17 @@
 //
 
 import LocalAuthentication
-import MapKit
 import SwiftUI
 
 struct ContentView: View {
-    @State private var centerCoordinate = CLLocationCoordinate2D()
-    @State private var selectedPlace: MKPointAnnotation?
-    @State private var showingPlaceDetails = false
-    @State private var locations = [CodableMKPointAnnotation]()
-    @State private var showingEditScreen = false
     @State private var isUnlocked = false
-    let filename = "SavedPlaces"
+    @State private var showingError = false
+    @State private var errorAlert = Alert(title: Text(""))
     
     var body: some View {
-        ZStack {
+        VStack {
             if isUnlocked {
-                MapView(centerCoordinate: $centerCoordinate,selectedPlace: $selectedPlace, showingPlaceDetails: $showingPlaceDetails, annotations: locations)
-                    .edgesIgnoringSafeArea(.all)
-                
-                Circle()
-                    .fill(Color.blue)
-                    .opacity(0.3)
-                    .frame(width: 32, height: 32)
-                
-                VStack {
-                    Spacer()
-                    HStack {
-                        Spacer()
-                        Button(action: {
-                            let newLocation = CodableMKPointAnnotation()
-                            newLocation.coordinate = self.centerCoordinate
-                            self.locations.append(newLocation)
-                            
-                            self.selectedPlace = newLocation
-                            self.showingEditScreen = true
-                        }) {
-                            Image(systemName: "plus")
-                                .padding()
-                                .background(Color.black.opacity(0.75))
-                                .foregroundColor(.white)
-                                .font(.title)
-                                .clipShape(Circle())
-                                .padding(.trailing)
-                        }
-                    }
-                }
+                PlacesView()
             } else {
                 Button("Unlock Places") {
                     self.authenticate()
@@ -62,35 +28,8 @@ struct ContentView: View {
                 .clipShape(Capsule())
             }
         }
-        .alert(isPresented: $showingPlaceDetails) {
-            Alert(title: Text(selectedPlace?.title ?? "Unknown"), message: Text(selectedPlace?.subtitle ?? "Missing place information."), primaryButton: .default(Text("OK")), secondaryButton: .default(Text("Edit")) {
-                self.showingEditScreen = true
-            })
-        }
-        .sheet(isPresented: $showingEditScreen, onDismiss: saveData) {
-            if self.selectedPlace != nil {
-                EditView(landmark: self.selectedPlace!)
-            }
-        }
-        .onAppear(perform: loadData)
-    }
-    
-    func loadData() {
-        guard let data = FileManager.default.loadDocument(filename) else { return }
-        
-        do {
-            locations = try JSONDecoder().decode([CodableMKPointAnnotation].self, from: data)
-        } catch {
-            print("Unable to load saved data. " + error.localizedDescription)
-        }
-    }
-    
-    func saveData() {
-        do {
-            let data = try JSONEncoder().encode(locations)
-            FileManager.default.writeDocument(filename, withData: data, options: [.atomicWrite, .completeFileProtection])
-        } catch {
-            print("Unable to save data. " + error.localizedDescription)
+        .alert(isPresented: $showingError) {
+            errorAlert
         }
     }
     
@@ -104,12 +43,14 @@ struct ContentView: View {
                     if success {
                         self.isUnlocked = true
                     } else {
-                        print("Authentication failed")
+                        self.errorAlert = Alert(title: Text("Error"), message: Text("Authentication failed"), dismissButton: .default(Text("OK")))
+                        self.showingError = true
                     }
                 }
             }
         } else {
-            print("No biometrics")
+            self.errorAlert = Alert(title: Text("Error"), message: Text("No biometrics"), dismissButton: .default(Text("OK")))
+            self.showingError = true
         }
     }
 }

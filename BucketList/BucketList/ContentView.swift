@@ -26,10 +26,10 @@ struct ContentView: View {
                 .background(Color.blue)
                 .foregroundColor(.white)
                 .clipShape(Capsule())
+                .alert(isPresented: $showingError) {
+                    errorAlert
+                }
             }
-        }
-        .alert(isPresented: $showingError) {
-            errorAlert
         }
     }
     

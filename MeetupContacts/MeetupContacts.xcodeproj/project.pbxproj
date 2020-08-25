@@ -1,0 +1,371 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5319BFCB24F44CFC0047312E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5319BFCA24F44CFC0047312E /* AppDelegate.swift */; };
+		5319BFCD24F44CFC0047312E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5319BFCC24F44CFC0047312E /* SceneDelegate.swift */; };
+		5319BFCF24F44CFC0047312E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5319BFCE24F44CFC0047312E /* ContentView.swift */; };
+		5319BFD124F44CFE0047312E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5319BFD024F44CFE0047312E /* Assets.xcassets */; };
+		5319BFD424F44CFE0047312E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5319BFD324F44CFE0047312E /* Preview Assets.xcassets */; };
+		5319BFD724F44CFE0047312E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5319BFD524F44CFE0047312E /* LaunchScreen.storyboard */; };
+		5319BFDF24F44D8A0047312E /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5319BFDE24F44D8A0047312E /* Contact.swift */; };
+		5319BFE124F462DB0047312E /* ContactRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5319BFE024F462DB0047312E /* ContactRow.swift */; };
+		5319BFE324F463270047312E /* FileManager-Documents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5319BFE224F463270047312E /* FileManager-Documents.swift */; };
+		5319BFE524F468300047312E /* NewContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5319BFE424F468300047312E /* NewContactView.swift */; };
+		5319BFE724F46AF30047312E /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5319BFE624F46AF30047312E /* ImagePicker.swift */; };
+		5319BFE924F48FCA0047312E /* Contacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5319BFE824F48FCA0047312E /* Contacts.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		5319BFC724F44CFC0047312E /* MeetupContacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetupContacts.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5319BFCA24F44CFC0047312E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5319BFCC24F44CFC0047312E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		5319BFCE24F44CFC0047312E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		5319BFD024F44CFE0047312E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5319BFD324F44CFE0047312E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5319BFD624F44CFE0047312E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5319BFD824F44CFE0047312E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5319BFDE24F44D8A0047312E /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		5319BFE024F462DB0047312E /* ContactRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactRow.swift; sourceTree = "<group>"; };
+		5319BFE224F463270047312E /* FileManager-Documents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager-Documents.swift"; sourceTree = "<group>"; };
+		5319BFE424F468300047312E /* NewContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewContactView.swift; sourceTree = "<group>"; };
+		5319BFE624F46AF30047312E /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		5319BFE824F48FCA0047312E /* Contacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contacts.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5319BFC424F44CFC0047312E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5319BFBE24F44CFC0047312E = {
+			isa = PBXGroup;
+			children = (
+				5319BFC924F44CFC0047312E /* MeetupContacts */,
+				5319BFC824F44CFC0047312E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5319BFC824F44CFC0047312E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5319BFC724F44CFC0047312E /* MeetupContacts.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5319BFC924F44CFC0047312E /* MeetupContacts */ = {
+			isa = PBXGroup;
+			children = (
+				5319BFCA24F44CFC0047312E /* AppDelegate.swift */,
+				5319BFCC24F44CFC0047312E /* SceneDelegate.swift */,
+				5319BFE224F463270047312E /* FileManager-Documents.swift */,
+				5319BFCE24F44CFC0047312E /* ContentView.swift */,
+				5319BFE024F462DB0047312E /* ContactRow.swift */,
+				5319BFE424F468300047312E /* NewContactView.swift */,
+				5319BFE624F46AF30047312E /* ImagePicker.swift */,
+				5319BFDE24F44D8A0047312E /* Contact.swift */,
+				5319BFE824F48FCA0047312E /* Contacts.swift */,
+				5319BFD024F44CFE0047312E /* Assets.xcassets */,
+				5319BFD524F44CFE0047312E /* LaunchScreen.storyboard */,
+				5319BFD824F44CFE0047312E /* Info.plist */,
+				5319BFD224F44CFE0047312E /* Preview Content */,
+			);
+			path = MeetupContacts;
+			sourceTree = "<group>";
+		};
+		5319BFD224F44CFE0047312E /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				5319BFD324F44CFE0047312E /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5319BFC624F44CFC0047312E /* MeetupContacts */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5319BFDB24F44CFE0047312E /* Build configuration list for PBXNativeTarget "MeetupContacts" */;
+			buildPhases = (
+				5319BFC324F44CFC0047312E /* Sources */,
+				5319BFC424F44CFC0047312E /* Frameworks */,
+				5319BFC524F44CFC0047312E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MeetupContacts;
+			productName = MeetupContacts;
+			productReference = 5319BFC724F44CFC0047312E /* MeetupContacts.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5319BFBF24F44CFC0047312E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1160;
+				LastUpgradeCheck = 1160;
+				ORGANIZATIONNAME = Andavazgar;
+				TargetAttributes = {
+					5319BFC624F44CFC0047312E = {
+						CreatedOnToolsVersion = 11.6;
+					};
+				};
+			};
+			buildConfigurationList = 5319BFC224F44CFC0047312E /* Build configuration list for PBXProject "MeetupContacts" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5319BFBE24F44CFC0047312E;
+			productRefGroup = 5319BFC824F44CFC0047312E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5319BFC624F44CFC0047312E /* MeetupContacts */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5319BFC524F44CFC0047312E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5319BFD724F44CFE0047312E /* LaunchScreen.storyboard in Resources */,
+				5319BFD424F44CFE0047312E /* Preview Assets.xcassets in Resources */,
+				5319BFD124F44CFE0047312E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5319BFC324F44CFC0047312E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5319BFE324F463270047312E /* FileManager-Documents.swift in Sources */,
+				5319BFDF24F44D8A0047312E /* Contact.swift in Sources */,
+				5319BFE924F48FCA0047312E /* Contacts.swift in Sources */,
+				5319BFE124F462DB0047312E /* ContactRow.swift in Sources */,
+				5319BFE524F468300047312E /* NewContactView.swift in Sources */,
+				5319BFCB24F44CFC0047312E /* AppDelegate.swift in Sources */,
+				5319BFE724F46AF30047312E /* ImagePicker.swift in Sources */,
+				5319BFCD24F44CFC0047312E /* SceneDelegate.swift in Sources */,
+				5319BFCF24F44CFC0047312E /* ContentView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		5319BFD524F44CFE0047312E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5319BFD624F44CFE0047312E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5319BFD924F44CFE0047312E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5319BFDA24F44CFE0047312E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5319BFDC24F44CFE0047312E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"MeetupContacts/Preview Content\"";
+				DEVELOPMENT_TEAM = WSR8557KHP;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = MeetupContacts/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.andavazgar.MeetupContacts;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5319BFDD24F44CFE0047312E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"MeetupContacts/Preview Content\"";
+				DEVELOPMENT_TEAM = WSR8557KHP;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = MeetupContacts/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.andavazgar.MeetupContacts;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5319BFC224F44CFC0047312E /* Build configuration list for PBXProject "MeetupContacts" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5319BFD924F44CFE0047312E /* Debug */,
+				5319BFDA24F44CFE0047312E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5319BFDB24F44CFE0047312E /* Build configuration list for PBXNativeTarget "MeetupContacts" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5319BFDC24F44CFE0047312E /* Debug */,
+				5319BFDD24F44CFE0047312E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5319BFBF24F44CFC0047312E /* Project object */;
+}

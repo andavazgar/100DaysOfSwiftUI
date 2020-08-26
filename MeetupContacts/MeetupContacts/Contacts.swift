@@ -25,6 +25,13 @@ class Contacts: ObservableObject {
         saveContacts()
     }
     
+    func deleteContacts(at indexes: IndexSet) {
+        for index in indexes {
+            list.remove(at: index)
+        }
+        saveContacts()
+    }
+    
     func loadContacts() {
         guard let data = FileManager.default.getDocument(filename) else { return }
         

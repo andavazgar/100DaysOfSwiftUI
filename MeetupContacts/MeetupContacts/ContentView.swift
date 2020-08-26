@@ -18,6 +18,7 @@ struct ContentView: View {
                 ForEach(contacts.list.sorted()) { contact in
                     ContactRow(contact: contact)
                 }
+                .onDelete(perform: contacts.deleteContacts)
             }
             .navigationBarTitle("Meetup Contacts")
             .navigationBarItems(leading: EditButton(), trailing: Button(action: {

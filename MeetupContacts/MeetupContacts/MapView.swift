@@ -34,7 +34,6 @@ struct MapView: UIViewRepresentable {
         if let location = location {
             let region = MKCoordinateRegion(center: location, latitudinalMeters: CLLocationDistance(exactly: 5000)!, longitudinalMeters: CLLocationDistance(exactly: 5000)!)
             uiView.setRegion(uiView.regionThatFits(region), animated: true)
-//            uiView.setCenter(location, animated: false)
             let annotation = MKPointAnnotation()
             annotation.coordinate = location
             uiView.addAnnotation(annotation)

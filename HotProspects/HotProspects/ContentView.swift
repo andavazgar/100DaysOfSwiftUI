@@ -9,63 +9,35 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var backgroundColor = Color.red
+    var prospects = Prospects()
     
     var body: some View {
         TabView {
-            Text("Tab 1")
-                .background(backgroundColor)
+            ProspectsView(filter: .none)
                 .tabItem {
-                    Image(systemName: "star")
-                    Text("Tab 1")
-                }
-                .contextMenu {
-                    Button(action: {
-                        self.backgroundColor = .red
-                    }) {
-                        Text("Red")
-                        Image(systemName: "1.circle")
-                    }
-
-                    Button(action: {
-                        self.backgroundColor = .green
-                    }) {
-                        Text("Green")
-                        Image(systemName: "2.circle")
-                    }
-
-                    Button(action: {
-                        self.backgroundColor = .blue
-                    }) {
-                        Text("Blue")
-                        Image(systemName: "3.circle")
-                    }
-                }
-                .onTapGesture {
-                    UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
-                        if success {
-                            let content = UNMutableNotificationContent()
-                            content.title = "Feed the cat"
-                            content.subtitle = "It looks hungry"
-                            content.sound = UNNotificationSound.default
-                            
-                            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-
-                            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-
-                            UNUserNotificationCenter.current().add(request)
-                        } else if let error = error {
-                            print(error.localizedDescription)
-                        }
-                    }
+                    Image(systemName: "person.3")
+                    Text("Everyone")
                 }
             
-            Text("Tab 2")
+            ProspectsView(filter: .contacted)
                 .tabItem {
-                    Image(systemName: "star.fill")
-                    Text("Tab 2")
+                    Image(systemName: "checkmark.circle")
+                    Text("Contacted")
                 }
+            
+            ProspectsView(filter: .uncontacted)
+                .tabItem {
+                    Image(systemName: "questionmark.diamond")
+                    Text("Uncontacted")
+                }
+            
+            MeView()
+                .tabItem {
+                    Image(systemName: "person.crop.square")
+                    Text("Me")
+            }
         }
+        .environmentObject(prospects)
     }
 }
 

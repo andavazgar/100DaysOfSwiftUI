@@ -6,6 +6,7 @@
 //  Copyright © 2020 Andavazgar. All rights reserved.
 //
 
+import CodeScanner
 import SwiftUI
 
 struct ProspectsView: View {
@@ -14,6 +15,7 @@ struct ProspectsView: View {
     }
     
     @EnvironmentObject var prospects: Prospects
+    @State private var isShowingScanner = false
     let filter: FilterType
     
     var filteredProspects: [Prospect] {
@@ -48,21 +50,42 @@ struct ProspectsView: View {
                         Text(prospect.email)
                             .foregroundColor(.secondary)
                     }
+                    .contextMenu {
+                        Button(prospect.isContacted ? "Mark Uncontacted" : "Mark Contacted" ) {
+                            self.prospects.toggle(prospect)
+                        }
+                    }
                 }
             }
             .navigationBarTitle(title)
             .navigationBarItems(trailing: Button(action: {
-                let prospect = Prospect()
-                prospect.name = "Andres"
-                prospect.email = "andres@email.com"
-                
-                self.prospects.people.append(prospect)
+                self.isShowingScanner = true
             }) {
                 Image(systemName: "qrcode.viewfinder")
                 Text("Scan")
             })
+            .sheet(isPresented: $isShowingScanner) {
+                CodeScannerView(codeTypes: [.qr], simulatedData: "Andres\nandres@email.com", completion: self.handleScan)
+            }
         }
+    }
+    
+    func handleScan(result: Result<String, CodeScannerView.ScanError>) {
+        isShowingScanner = false
         
+        switch result {
+        case .success(let code):
+            let details = code.components(separatedBy: "\n")
+            guard details.count == 2 else { return }
+            
+            let prospect = Prospect()
+            prospect.name = details[0]
+            prospect.email = details[1]
+            self.prospects.people.append(prospect)
+            
+        case .failure(_):
+            print("Scanning failed")
+        }
     }
 }
 

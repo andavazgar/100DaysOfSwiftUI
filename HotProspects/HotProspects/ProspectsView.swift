@@ -17,6 +17,7 @@ struct ProspectsView: View {
     
     @EnvironmentObject var prospects: Prospects
     @State private var isShowingScanner = false
+    @State private var showingSortingOptions = false
     let filter: FilterType
     
     var filteredProspects: [Prospect] {
@@ -40,39 +41,68 @@ struct ProspectsView: View {
             return "Uncontacted people"
         }
     }
+    var sampleScanData: String {
+        let names = ["John Smith", "Sam Brown", "Jessica Gonzalez", "Amy Jones", "Rose Williams"]
+        let emails = ["john@smith.com", "sam@brown.com", "jessica@gonzalez.com", "amy@jones.com", "rose@williams.com"]
+        let index = Int.random(in: 0..<names.count)
+        
+        return "\(names[index])\n\(emails[index])"
+    }
     
     var body: some View {
         NavigationView {
             List {
                 ForEach(filteredProspects) { prospect in
-                    VStack(alignment: .leading) {
-                        Text(prospect.name)
-                            .font(.headline)
-                        Text(prospect.email)
-                            .foregroundColor(.secondary)
-                    }
-                    .contextMenu {
-                        Button(prospect.isContacted ? "Mark Uncontacted" : "Mark Contacted" ) {
-                            self.prospects.toggle(prospect)
+                    HStack {
+                        Image(systemName: prospect.isContacted ? "checkmark.circle" : "xmark.circle")
+                        VStack(alignment: .leading) {
+                            Text(prospect.name)
+                                .font(.headline)
+                            Text(prospect.email)
+                                .foregroundColor(.secondary)
                         }
-                        
-                        if !prospect.isContacted {
-                            Button("Remind Me") {
-                                self.addNotification(for: prospect)
+                        .contextMenu {
+                            Button(prospect.isContacted ? "Mark Uncontacted" : "Mark Contacted" ) {
+                                self.prospects.toggle(prospect)
+                            }
+                            
+                            if !prospect.isContacted {
+                                Button("Remind Me") {
+                                    self.addNotification(for: prospect)
+                                }
                             }
                         }
                     }
                 }
             }
             .navigationBarTitle(title)
-            .navigationBarItems(trailing: Button(action: {
-                self.isShowingScanner = true
-            }) {
-                Image(systemName: "qrcode.viewfinder")
-                Text("Scan")
-            })
+            .navigationBarItems(
+                leading: Button(action: {
+                    self.showingSortingOptions = true
+                }) {
+                    Text("Sort")
+                    Image(systemName: "arrow.up.arrow.down.circle")
+                },
+                trailing: Button(action: {
+                    self.isShowingScanner = true
+                }) {
+                    Image(systemName: "qrcode.viewfinder")
+                    Text("Scan")
+                }
+            )
             .sheet(isPresented: $isShowingScanner) {
-                CodeScannerView(codeTypes: [.qr], simulatedData: "Andres\nandres@email.com", completion: self.handleScan)
+                CodeScannerView(codeTypes: [.qr], simulatedData: self.sampleScanData, completion: self.handleScan)
+            }
+            .actionSheet(isPresented: $showingSortingOptions) {
+                ActionSheet(title: Text("Sort by:"), message: nil, buttons: [
+                    .default(Text("Name")) {
+                        self.prospects.sort(by: .name)
+                    },
+                    .default(Text("Creation date")) {
+                        self.prospects.sort(by: .creationDate)
+                    },
+                    .cancel()
+                ])
             }
         }
     }

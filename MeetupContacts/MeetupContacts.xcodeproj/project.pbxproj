@@ -21,6 +21,7 @@
 		5319BFE524F468300047312E /* NewContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5319BFE424F468300047312E /* NewContactView.swift */; };
 		5319BFE724F46AF30047312E /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5319BFE624F46AF30047312E /* ImagePicker.swift */; };
 		5319BFE924F48FCA0047312E /* Contacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5319BFE824F48FCA0047312E /* Contacts.swift */; };
+		5330FB63250C1A1A0015D444 /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5330FB62250C1A1A0015D444 /* DetailsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		5319BFE424F468300047312E /* NewContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewContactView.swift; sourceTree = "<group>"; };
 		5319BFE624F46AF30047312E /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		5319BFE824F48FCA0047312E /* Contacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contacts.swift; sourceTree = "<group>"; };
+		5330FB62250C1A1A0015D444 /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 				5319BFCE24F44CFC0047312E /* ContentView.swift */,
 				5319BFE024F462DB0047312E /* ContactRow.swift */,
 				5319BFE424F468300047312E /* NewContactView.swift */,
+				5330FB62250C1A1A0015D444 /* DetailsView.swift */,
 				5319BFE624F46AF30047312E /* ImagePicker.swift */,
 				530EAAA524F5FE44007963C7 /* MapView.swift */,
 				5319BFDE24F44D8A0047312E /* Contact.swift */,
@@ -171,6 +174,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5319BFE324F463270047312E /* FileManager-Documents.swift in Sources */,
+				5330FB63250C1A1A0015D444 /* DetailsView.swift in Sources */,
 				5319BFDF24F44D8A0047312E /* Contact.swift in Sources */,
 				530EAAA424F5FD62007963C7 /* LocationFetcher.swift in Sources */,
 				530EAAA624F5FE44007963C7 /* MapView.swift in Sources */,

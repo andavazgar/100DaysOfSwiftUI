@@ -14,6 +14,7 @@ class Contacts: ObservableObject {
     
     init(_ contacts: [Contact] = []) {
         self.list = contacts
+        loadContacts()
     }
     
     func addContact(_ contact: Contact, image: UIImage) {
@@ -22,17 +23,16 @@ class Contacts: ObservableObject {
         }
         
         list.append(contact)
+        list.sort()
         saveContacts()
     }
     
     func deleteContacts(at indexes: IndexSet) {
-        for index in indexes {
-            list.remove(at: index)
-        }
+        list.remove(atOffsets: indexes)
         saveContacts()
     }
     
-    func loadContacts() {
+    private func loadContacts() {
         guard let data = FileManager.default.getDocument(filename) else { return }
         
         do {

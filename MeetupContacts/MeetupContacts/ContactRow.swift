@@ -10,29 +10,16 @@ import SwiftUI
 
 struct ContactRow: View {
     let contact: Contact
-    let image: UIImage!
-    
-    init(contact: Contact) {
-        self.contact = contact
-        if let imageData = FileManager.default.getDocument(contact.id.uuidString) {
-            image = UIImage(data: imageData)
-        } else {
-            fatalError("Could not load image")
-        }
-    }
     
     var body: some View {
         NavigationLink(destination:
-            Image(uiImage: image)
-                .resizable()
-                .scaledToFit()
-                .navigationBarTitle(Text(contact.name), displayMode: .inline)
+            DetailsView(contact: contact)
         ) {
-            if image != nil {
-                Image(uiImage: image)
+            if contact.getImage() != nil {
+                Image(uiImage: contact.getImage()!)
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 50, height: 50)
+                    .frame(width: 60, height: 60)
                     .clipShape(Circle())
             }
             Text(contact.name)

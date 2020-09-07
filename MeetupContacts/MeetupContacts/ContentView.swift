@@ -15,7 +15,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(contacts.list.sorted()) { contact in
+                ForEach(contacts.list) { contact in
                     ContactRow(contact: contact)
                 }
                 .onDelete(perform: contacts.deleteContacts)
@@ -26,9 +26,6 @@ struct ContentView: View {
             }) {
                 Image(systemName: "plus")
             })
-            .onAppear {
-                self.contacts.loadContacts()
-            }
             .sheet(isPresented: $showingNewContactSheet) {
                 NewContactView(contacts: self.contacts)
             }

@@ -13,7 +13,7 @@
 
 Views: `DatePicker`, `Stepper`  
 Modifiers: `navigationBarItems()`  
-Machie Learning (`CoreML`, and`CreateML`)  
+Machine Learning (`CoreML`, and`CreateML`)  
 `Date`, `DateFormatter`, `DateComponents`
 
 

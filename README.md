@@ -2,7 +2,7 @@
 
 Projects from the [100 Days of SwiftUI](https://www.hackingwithswift.com/100/swiftui) course by Paul Hudson ([@twostraws](https://github.com/twostraws))
 
-The course is divided into `Projects` and `Milestones`. `Projects` are meant to teach iOS cocepts, techniques and frameworks.
+The course is divided into `Projects` and `Milestones`. `Projects` are meant to teach iOS concepts, techniques and frameworks.
 **Every 3 projects**, a milestone is reached. `Milestones` are challenges that use the concepts learned in the previous 3 projects. For example, after `Project 3` comes `Milestone 1`.
 
 ## Course Content
@@ -14,7 +14,7 @@ The course is divided into `Projects` and `Milestones`. `Projects` are meant to 
 | **Project 2:** *[GuessTheFlag](GuessTheFlag)*<br><sub>_**Views:** `HStack`, `VStack`, `ZStack`, `Spacer`, `Image`, `Button`, `Alert`, `Color`, `LinearGradient`, `RadialGradient`, `AngularGradient`_<br><br></sub> | ![Screenshots](GuessTheFlag/Screenshots/Thumbnails/Combined.png) |
 | **Project 3:** *[ViewsAndModifiers](ViewsAndModifiers)*<br><sub>_(Technique Project)<br><br>– Fundamentals of `Views`, and `ViewModifiers`<br>– Conditional modifiers<br>– Environment modifiers<br>– View composition<br>– Custom modifiers<br>– Custom containers using `@ViewBuilder` and `@escaping` closure_</sub> | ![Screenshots](ViewsAndModifiers/Screenshots/Thumbnails/Combined.png) |
 | **Milestone 1:** *[RockPaperScissors](RockPaperScissors)*<br><sub>_Applies concepts learned in Projects 1-3_</sub> | ![Screenshots](RockPaperScissors/Screenshots/Thumbnails/Combined.png) |
-| **Project 4:** *[BetterRest](BetterRest)*<br><sub>_**Views:** `DatePicker`, `Stepper`<br>**Modifiers:** `navigationBarItems()`<br>Machie Learning (`CoreML`, and `CreateML`)<br>`Date`, `DateFormatter`, `DateComponents`_</sub> | ![Screenshots](BetterRest/Screenshots/Thumbnails/Combined.png) |
+| **Project 4:** *[BetterRest](BetterRest)*<br><sub>_**Views:** `DatePicker`, `Stepper`<br>**Modifiers:** `navigationBarItems()`<br>Machine Learning (`CoreML`, and `CreateML`)<br>`Date`, `DateFormatter`, `DateComponents`_</sub> | ![Screenshots](BetterRest/Screenshots/Thumbnails/Combined.png) |
 | **Project 5:** *[WordScramble](WordScramble)*<br><sub>_**Views:** `List`<br>**Modifiers:** `onAppear()`<br>`Bundle`, `fatalError()`, `UITextChecker`_</sub> | ![Screenshots](WordScramble/Screenshots/Thumbnails/Combined.png) |
 | **Project 6:** *[Animations](Animations)*<br><sub>_(Technique Project)<br><br>**Modifiers:** `animation`, `scaleEffect`, `rotation3DEffect`, `rotationEffect`, `offset`, `gesture`, `clipped`, `transition`<br>**Other:** `Animation`, `withAnimation`, `DragGesture`<br><br>**Concepts learned through research:**<br>– `AnyView`<br>– Using `_` (underscore) before variable (e.g.: `_variable`) to initialize `State` variables_</sub> | ![Screenshots](Animations/Screenshots/Thumbnails/Combined.png) |
 | **Milestone 2:** *[MultiplicationTables](MultiplicationTables)*<br><sub>_Applies concepts learned in Projects 4-6<br><br>**Concepts learned through research:**<br>–The `GeometryReader` view to set frame sizes as a percentage of the screen<br>– The `sheet` view modifier to show another view modally<br>– The `UIViewRepresentable` protocol to wrap UIKit views and show them in SwiftUI_</sub> | ![Screenshots](MultiplicationTables/Screenshots/Thumbnails/Combined.png) |
@@ -30,3 +30,4 @@ The course is divided into `Projects` and `Milestones`. `Projects` are meant to 
 | **Project 14:** *[BucketList](BucketList)*<br><sub>_– Writing data to the Documents directory using `FileManager`<br>– MapKit (`MKMapView`, `MKPinAnnotationView`)<br>– Biometrics authentication (Touch ID and Face ID) using `LocalAuthentication`<br>– Adding `Comparable` conformance to custom types_</sub> | ![Screenshots](BucketList/Screenshots/Thumbnails/Combined.png) |
 | **Project 15:** *[Accessibility](Accessibility)*<br><sub>_(Technique Project)<br><br>– Identifying views with useful labels<br>– Hiding and grouping accessibility data<br>– Reading the value of controls_</sub> | ![Screenshots](Accessibility/Screenshots/Thumbnails/Combined.png) |
 | **Milestone 5:** *[MeetupContacts](MeetupContacts)*<br><sub>_Applies concepts learned in Projects 13-15_</sub> | ![Screenshots](MeetupContacts/Screenshots/Thumbnails/Combined.png) |
+| **Project 16:** *[HotProspects](HotProspects)*<br><sub>_– Creating Tab bars using `TabView`<br>– Context menus<br>– Sharing data between views with `EnvironmentObject`<br>– Local notifications_</sub> | ![Screenshots](HotProspects/Screenshots/Thumbnails/Combined.png) |

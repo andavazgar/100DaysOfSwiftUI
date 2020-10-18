@@ -9,25 +9,32 @@ import CoreHaptics
 import SwiftUI
 
 struct ContentView: View {
-    @State private var counter = 0
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @State private var cards = Array(repeating: Card.example, count: 10)
     
     var body: some View {
-        VStack {
-            Text("Hello, World!")
-                .onReceive(timer, perform: { time in
-                    if self.counter < 5 {
-                        print(time)
-                    } else {
-                        self.timer.upstream.connect().cancel()
+        ZStack {
+            Image("background")
+                .resizable()
+                .scaledToFill()
+                .edgesIgnoringSafeArea(.all)
+            
+            VStack {
+                ZStack {
+                    ForEach(0..<cards.count, id: \.self) { index in
+                        CardView(card: cards[index]) {
+                            withAnimation {
+                                self.removeCard(at: index)
+                            }
+                        }
+                            .stacked(at: index, in: cards.count)
                     }
-                    
-                    counter += 1
-                })
-                .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification), perform: { _ in
-                    print("Moving to the background!")
-                })
+                }
+            }
         }
+    }
+    
+    func removeCard(at index: Int) {
+        cards.remove(at: index)
     }
 }
 

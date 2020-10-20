@@ -13,10 +13,12 @@ struct ContentView: View {
     @Environment(\.accessibilityEnabled) var accessibilityEnabled
     
     @State private var cards = [Card]()
-    @State private var isActive = true
+    @State private var isActive = false
     @State private var timeRemaining = 100
+    @State private var gameStats = GameStats()
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
+    @State private var showingSettingsScreen = false
     @State private var showingEditScreen = false
     
     var body: some View {
@@ -37,40 +39,96 @@ struct ContentView: View {
                             .fill(Color.black)
                             .opacity(0.75))
                 
-                ZStack {
-                    ForEach(0..<cards.count, id: \.self) { index in
-                        CardView(card: cards[index]) {
-                            withAnimation {
-                                self.removeCard(at: index)
+                // Stack of cards
+                if isActive && cards.count > 0 {
+                    ZStack {
+                        ForEach(0..<cards.count, id: \.self) { index in
+                            CardView(card: cards[index]) { isCorrect in
+                                
+                                if isCorrect {
+                                    self.gameStats.correct += 1
+                                } else {
+                                    self.gameStats.incorrect += 1
+                                }
+                                
+                                withAnimation {
+                                    self.removeCard(at: index)
+                                }
                             }
+                            .stacked(at: index, in: cards.count)
+                            .allowsHitTesting(index == cards.count - 1)
+                            .accessibility(hidden: index < cards.count - 1)
                         }
-                        .stacked(at: index, in: cards.count)
-                        .allowsHitTesting(index == cards.count - 1)
-                        .accessibility(hidden: index < cards.count - 1)
                     }
+                    .allowsHitTesting(timeRemaining > 0)
                 }
-                .allowsHitTesting(timeRemaining > 0)
                 
-                if cards.isEmpty {
-                    Button("Start Again", action: resetCards)
+                // Start Game button
+                if !isActive && cards.count > 0 {
+                    Button("Start Game", action: startGame)
                         .padding()
                         .background(Color.white)
                         .foregroundColor(.black)
                         .clipShape(Capsule())
                 }
+                
+                // End of Game & Stats Screen
+                if (!isActive && cards.count == 0) || timeRemaining == 0 {
+                    VStack {
+                        HStack(spacing: 15) {
+                            VStack(alignment: .leading) {
+                                Text("Cards:")
+                                Text("Reviewed:")
+                                Text("Correct:")
+                                Text("Incorrect:")
+                            }
+                            
+                            VStack(alignment: .trailing) {
+                                Text("\(gameStats.deckSize)")
+                                Text("\(gameStats.numCardsReviewed)")
+                                Text("\(gameStats.correct)")
+                                Text("\(gameStats.incorrect)")
+                            }
+                        }
+                        .padding(.vertical, 2)
+                        .padding(.horizontal)
+                        
+                        Spacer()
+                            .frame(maxHeight: 20)
+                        
+                        Button("Start Again", action: resetCards)
+                            .padding()
+                            .background(Color.white)
+                            .foregroundColor(.black)
+                            .clipShape(Capsule())
+                    }
+                    .padding()
+                    .background(Color.black.opacity(0.7))
+                    .foregroundColor(.white)
+                    .clipShape(RoundedRectangle(cornerRadius: 25))
+                }
             }
             
             VStack {
                 HStack {
+                    AppButton(action: {
+                        self.showingSettingsScreen = true
+                    }) {
+                        Image(systemName: "gear")
+                    }
+//                    .sheet(isPresented: showingSettingsScreen) {
+//                        /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Content@*/Text("Sheet Content")/*@END_MENU_TOKEN@*/
+//                    }
+                    
                     Spacer()
                     
-                    Button(action: {
+                    AppButton(action: {
                         self.showingEditScreen = true
                     }) {
                         Image(systemName: "plus.circle")
-                            .padding()
-                            .background(Color.black.opacity(0.7))
-                            .clipShape(Circle())
+                    }
+                    .sheet(isPresented: $showingEditScreen, onDismiss: resetCards) {
+                        EditCardsView()
                     }
                 }
                 
@@ -85,30 +143,24 @@ struct ContentView: View {
                     Spacer()
                     
                     HStack {
-                        Button(action: {
+                        AppButton(action: {
                             withAnimation {
                                 self.removeCard(at: cards.count - 1)
                             }
                         }) {
                             Image(systemName: "xmark.circle")
-                                .padding()
-                                .background(Color.black.opacity(0.7))
-                                .clipShape(Circle())
                         }
                         .accessibility(label: Text("Wrong"))
                         .accessibility(hint: Text("Mark your answer as being incorrect."))
                         
                         Spacer()
                         
-                        Button(action: {
+                        AppButton(action: {
                             withAnimation {
                                 self.removeCard(at: cards.count - 1)
                             }
                         }) {
                             Image(systemName: "checkmark.circle")
-                                .padding()
-                                .background(Color.black.opacity(0.7))
-                                .clipShape(Circle())
                         }
                         .accessibility(label: Text("Correct"))
                         .accessibility(hint: Text("Mark your answer as being correct."))
@@ -122,7 +174,7 @@ struct ContentView: View {
         .onReceive(timer, perform: { _ in
             guard isActive else { return }
             
-            if timeRemaining > 0 {
+            if timeRemaining > 0 && cards.isEmpty == false {
                 timeRemaining -= 1
             }
         })
@@ -130,14 +182,19 @@ struct ContentView: View {
             isActive = false
         })
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification), perform: { _ in
-            if cards.isEmpty == false {
+            if cards.isEmpty == false && gameStats.numCardsReviewed > 0 {
                 isActive = true
             }
         })
-        .sheet(isPresented: $showingEditScreen, onDismiss: resetCards) {
-            EditCardsView()
-        }
         .onAppear(perform: resetCards)
+    }
+    
+    
+    func startGame() {
+        guard cards.count > 0 else { return }
+        
+        gameStats.deckSize = cards.count
+        isActive = true
     }
     
     func removeCard(at index: Int) {
@@ -152,7 +209,6 @@ struct ContentView: View {
     
     func resetCards() {
         timeRemaining = 100
-        isActive = true
         loadData()
     }
     

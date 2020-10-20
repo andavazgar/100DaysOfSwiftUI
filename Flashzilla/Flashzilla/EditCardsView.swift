@@ -19,7 +19,7 @@ struct EditCardsView: View {
                 Section(header: Text("Add new card")) {
                     TextField("Prompt", text: $newPrompt)
                     TextField("Answer", text: $newAnswer)
-                    Button("Add card", action: {})
+                    Button("Add card", action: addCard)
                 }
                 
                 Section {
@@ -52,6 +52,9 @@ struct EditCardsView: View {
         let card = Card(prompt: trimmedPrompt, answer: trimmedAnswer)
         cards.insert(card, at: 0)
         saveData()
+        
+        newPrompt = ""
+        newAnswer = ""
     }
     
     func removeCards(at offsets: IndexSet) {

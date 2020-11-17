@@ -14,9 +14,12 @@ struct ContentView: View {
     
     @State private var cards = [Card]()
     @State private var isActive = false
-    @State private var timeRemaining = 100
+    @State private var retryMistakes = false
+    @State private var totalGameTime = 100
+    @State private var timeRemaining = 0
+    @State private var timer = Timer.publish(every: 1, on: .main, in: .common)
     @State private var gameStats = GameStats()
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    
     
     @State private var showingSettingsScreen = false
     @State private var showingEditScreen = false
@@ -47,12 +50,14 @@ struct ContentView: View {
                                 
                                 if isCorrect {
                                     self.gameStats.correct += 1
+                                    withAnimation {
+                                        self.removeCard(at: index)
+                                    }
                                 } else {
                                     self.gameStats.incorrect += 1
-                                }
-                                
-                                withAnimation {
-                                    self.removeCard(at: index)
+                                    withAnimation {
+                                        self.removeCard(at: index, wasCorrect: false)
+                                    }
                                 }
                             }
                             .stacked(at: index, in: cards.count)
@@ -63,49 +68,51 @@ struct ContentView: View {
                     .allowsHitTesting(timeRemaining > 0)
                 }
                 
-                // Start Game button
-                if !isActive && cards.count > 0 {
-                    Button("Start Game", action: startGame)
-                        .padding()
-                        .background(Color.white)
-                        .foregroundColor(.black)
-                        .clipShape(Capsule())
-                }
-                
-                // End of Game & Stats Screen
-                if (!isActive && cards.count == 0) || timeRemaining == 0 {
-                    VStack {
-                        HStack(spacing: 15) {
-                            VStack(alignment: .leading) {
-                                Text("Cards:")
-                                Text("Reviewed:")
-                                Text("Correct:")
-                                Text("Incorrect:")
-                            }
-                            
-                            VStack(alignment: .trailing) {
-                                Text("\(gameStats.deckSize)")
-                                Text("\(gameStats.numCardsReviewed)")
-                                Text("\(gameStats.correct)")
-                                Text("\(gameStats.incorrect)")
-                            }
-                        }
-                        .padding(.vertical, 2)
-                        .padding(.horizontal)
-                        
-                        Spacer()
-                            .frame(maxHeight: 20)
-                        
-                        Button("Start Again", action: resetCards)
+                if !isActive {
+                    // Start Game button
+                    if cards.count > 0 && timeRemaining == totalGameTime {
+                        Button("Start Game", action: startGame)
                             .padding()
                             .background(Color.white)
                             .foregroundColor(.black)
                             .clipShape(Capsule())
                     }
-                    .padding()
-                    .background(Color.black.opacity(0.7))
-                    .foregroundColor(.white)
-                    .clipShape(RoundedRectangle(cornerRadius: 25))
+                    
+                    // End of Game & Stats Screen
+                    if (cards.count == 0 && timeRemaining < totalGameTime) || timeRemaining == 0 {
+                        VStack {
+                            HStack(spacing: 15) {
+                                VStack(alignment: .leading) {
+                                    Text("Cards:")
+                                    Text("Reviewed:")
+                                    Text("Correct:")
+                                    Text("Incorrect:")
+                                }
+                                
+                                VStack(alignment: .trailing) {
+                                    Text("\(gameStats.deckSize)")
+                                    Text("\(gameStats.numCardsReviewed)")
+                                    Text("\(gameStats.correct)")
+                                    Text("\(gameStats.incorrect)")
+                                }
+                            }
+                            .padding(.vertical, 2)
+                            .padding(.horizontal)
+                            
+                            Spacer()
+                                .frame(maxHeight: 20)
+                            
+                            Button("Start Again", action: resetCards)
+                                .padding()
+                                .background(Color.white)
+                                .foregroundColor(.black)
+                                .clipShape(Capsule())
+                        }
+                        .padding()
+                        .background(Color.black.opacity(0.7))
+                        .foregroundColor(.white)
+                        .clipShape(RoundedRectangle(cornerRadius: 25))
+                    }
                 }
             }
             
@@ -116,9 +123,9 @@ struct ContentView: View {
                     }) {
                         Image(systemName: "gear")
                     }
-//                    .sheet(isPresented: showingSettingsScreen) {
-//                        /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Content@*/Text("Sheet Content")/*@END_MENU_TOKEN@*/
-//                    }
+                    .sheet(isPresented: $showingSettingsScreen) {
+                        SettingsView(retryMistakes: $retryMistakes)
+                    }
                     
                     Spacer()
                     
@@ -134,9 +141,6 @@ struct ContentView: View {
                 
                 Spacer()
             }
-            .foregroundColor(.white)
-            .font(.largeTitle)
-            .padding()
             
             if differentiateWithoutColor || accessibilityEnabled {
                 VStack {
@@ -145,7 +149,7 @@ struct ContentView: View {
                     HStack {
                         AppButton(action: {
                             withAnimation {
-                                self.removeCard(at: cards.count - 1)
+                                self.removeCard(at: cards.count - 1, wasCorrect: false)
                             }
                         }) {
                             Image(systemName: "xmark.circle")
@@ -172,10 +176,15 @@ struct ContentView: View {
             }
         }
         .onReceive(timer, perform: { _ in
-            guard isActive else { return }
+            guard isActive else {
+                timer.connect().cancel()
+                return
+            }
             
             if timeRemaining > 0 && cards.isEmpty == false {
                 timeRemaining -= 1
+            } else {
+                isActive = false
             }
         })
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification), perform: { _ in
@@ -195,12 +204,18 @@ struct ContentView: View {
         
         gameStats.deckSize = cards.count
         isActive = true
+        _ = timer.connect()
     }
     
-    func removeCard(at index: Int) {
+    func removeCard(at index: Int, wasCorrect: Bool = true) {
         guard index >= 0 else { return }
         
+        let card = cards[index]
         cards.remove(at: index)
+        
+        if wasCorrect == false && retryMistakes {
+            cards.insert(card, at: 0)
+        }
         
         if cards.isEmpty {
             isActive = false
@@ -208,7 +223,9 @@ struct ContentView: View {
     }
     
     func resetCards() {
-        timeRemaining = 100
+        timeRemaining = totalGameTime
+        timer = Timer.publish(every: 1, on: .main, in: .common)
+        _ = timer.connect()
         loadData()
     }
     

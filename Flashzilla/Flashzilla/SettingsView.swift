@@ -10,13 +10,25 @@ import SwiftUI
 struct SettingsView: View {
     @Environment(\.presentationMode) var presentationMode
     
+    @Binding var retryMistakes: Bool
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            Form {
+                Section {
+                    Toggle("Retry incorrect cards", isOn: $retryMistakes)
+                }
+            }
+            .navigationBarTitle("Settings")
+            .navigationBarItems(trailing: Button("Done") {
+                presentationMode.wrappedValue.dismiss()
+            })
+        }
     }
 }
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView()
+        SettingsView(retryMistakes: .constant(true))
     }
 }

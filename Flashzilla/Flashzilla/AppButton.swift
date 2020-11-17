@@ -17,6 +17,9 @@ struct AppButton<Label>: View where Label: View {
             .padding()
             .background(Color.black.opacity(0.7))
             .clipShape(Circle())
+            .foregroundColor(.white)
+            .font(.largeTitle)
+            .padding()
     }
 }
 

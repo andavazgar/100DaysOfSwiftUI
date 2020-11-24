@@ -47,7 +47,6 @@ struct ContentView: View {
                     ZStack {
                         ForEach(0..<cards.count, id: \.self) { index in
                             CardView(card: cards[index]) { isCorrect in
-                                
                                 if isCorrect {
                                     self.gameStats.correct += 1
                                     withAnimation {
@@ -102,7 +101,7 @@ struct ContentView: View {
                             Spacer()
                                 .frame(maxHeight: 20)
                             
-                            Button("Start Again", action: resetCards)
+                            Button("Start Again", action: restartGame)
                                 .padding()
                                 .background(Color.white)
                                 .foregroundColor(.black)
@@ -123,7 +122,9 @@ struct ContentView: View {
                     }) {
                         Image(systemName: "gear")
                     }
-                    .sheet(isPresented: $showingSettingsScreen) {
+                    .sheet(isPresented: $showingSettingsScreen, onDismiss: {
+                        loadGame()
+                    }) {
                         SettingsView(retryMistakes: $retryMistakes)
                     }
                     
@@ -134,7 +135,7 @@ struct ContentView: View {
                     }) {
                         Image(systemName: "plus.circle")
                     }
-                    .sheet(isPresented: $showingEditScreen, onDismiss: resetCards) {
+                    .sheet(isPresented: $showingEditScreen, onDismiss: loadGame) {
                         EditCardsView()
                     }
                 }
@@ -195,15 +196,23 @@ struct ContentView: View {
                 isActive = true
             }
         })
-        .onAppear(perform: resetCards)
+        .onAppear(perform: loadGame)
     }
     
     
     func startGame() {
         guard cards.count > 0 else { return }
         
-        gameStats.deckSize = cards.count
         isActive = true
+        timer = Timer.publish(every: 1, on: .main, in: .common)
+        _ = timer.connect()
+    }
+    
+    func restartGame() {
+        loadGame()
+        
+        isActive = true
+        timer = Timer.publish(every: 1, on: .main, in: .common)
         _ = timer.connect()
     }
     
@@ -222,11 +231,10 @@ struct ContentView: View {
         }
     }
     
-    func resetCards() {
+    func loadGame() {
         timeRemaining = totalGameTime
-        timer = Timer.publish(every: 1, on: .main, in: .common)
-        _ = timer.connect()
         loadData()
+        gameStats = GameStats(deckSize: cards.count)
     }
     
     func loadData() {

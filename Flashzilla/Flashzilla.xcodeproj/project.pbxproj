@@ -17,6 +17,7 @@
 		538B0DEB253E4A3400879E26 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538B0DEA253E4A3400879E26 /* Card.swift */; };
 		539E028E254A2F7D00645F0D /* GameStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539E028D254A2F7D00645F0D /* GameStats.swift */; };
 		53BDFF4125479EDC001B88E9 /* EditCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BDFF4025479EDB001B88E9 /* EditCardsView.swift */; };
+		53E41FDA256E006C00C039C8 /* AppLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E41FD9256E006C00C039C8 /* AppLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		538B0DEA253E4A3400879E26 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		539E028D254A2F7D00645F0D /* GameStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStats.swift; sourceTree = "<group>"; };
 		53BDFF4025479EDB001B88E9 /* EditCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardsView.swift; sourceTree = "<group>"; };
+		53E41FD9256E006C00C039C8 /* AppLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				53BDFF4025479EDB001B88E9 /* EditCardsView.swift */,
 				5301F555254DDC6700D68D12 /* SettingsView.swift */,
 				5301F558254DDE7A00D68D12 /* AppButton.swift */,
+				53E41FD9256E006C00C039C8 /* AppLabel.swift */,
 				5365F45E252523560027057F /* Assets.xcassets */,
 				5365F463252523560027057F /* Info.plist */,
 				5365F460252523560027057F /* Preview Content */,
@@ -157,6 +160,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5365F45D252523540027057F /* ContentView.swift in Sources */,
+				53E41FDA256E006C00C039C8 /* AppLabel.swift in Sources */,
 				5301F556254DDC6700D68D12 /* SettingsView.swift in Sources */,
 				5301F559254DDE7A00D68D12 /* AppButton.swift in Sources */,
 				538B0DE8253E4A2300879E26 /* CardView.swift in Sources */,

@@ -32,16 +32,6 @@ struct ContentView: View {
                 .edgesIgnoringSafeArea(.all)
             
             VStack {
-                Text("Time: \(timeRemaining)")
-                    .font(.largeTitle)
-                    .foregroundColor(.white)
-                    .padding(.horizontal, 20)
-                    .padding(.vertical, 5)
-                    .background(
-                        Capsule()
-                            .fill(Color.black)
-                            .opacity(0.75))
-                
                 // Stack of cards
                 if isActive && cards.count > 0 {
                     ZStack {
@@ -128,6 +118,10 @@ struct ContentView: View {
                         SettingsView(retryMistakes: $retryMistakes)
                     }
                     
+                    AppLabel("Retry cards: \(retryMistakes ? "ON" : "OFF")", color: retryMistakes ? .green : .red)
+                        .font(.title3)
+                        .offset(x: -15, y: 0)
+                    
                     Spacer()
                     
                     AppButton(action: {
@@ -139,6 +133,17 @@ struct ContentView: View {
                         EditCardsView()
                     }
                 }
+                
+                Spacer()
+                
+                AppLabel("Deck size: \(cards.count)")
+                    .font(.title2)
+            }
+            
+            VStack {
+                AppLabel("Time: \(timeRemaining)")
+                    .font(.largeTitle)
+                    .padding(28)
                 
                 Spacer()
             }

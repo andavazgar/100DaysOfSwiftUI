@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CardView: View {
     let card: Card
+    var shouldReset = false
     var removal: ((_ isCorrect: Bool) -> Void)?
     
     @Environment(\.accessibilityDifferentiateWithoutColor) var differentiateWithoutColor
@@ -68,13 +69,17 @@ struct CardView: View {
                 })
                 .onEnded({ _ in
                     if abs(self.offset.width) > 100 {
+                        self.removal?(self.offset.width > 0)
+                        
                         if self.offset.width < 0 {
                             self.feedback.notificationOccurred(.error)
+                            
+                            if shouldReset {
+                                self.resetPosition()
+                            }
                         }
-                        
-                        self.removal?(self.offset.width > 0)
                     } else {
-                        self.offset = .zero
+                        self.resetPosition()
                     }
                 })
         )
@@ -82,6 +87,11 @@ struct CardView: View {
             self.isShowingAnswer.toggle()
         }
         .animation(.spring())
+    }
+    
+    func resetPosition() {
+        isShowingAnswer = false
+        offset = .zero
     }
     
     func getBackgroundColor(withOffset offset: CGFloat) -> Color {

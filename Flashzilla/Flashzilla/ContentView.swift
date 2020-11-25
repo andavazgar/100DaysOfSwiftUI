@@ -35,17 +35,19 @@ struct ContentView: View {
                 // Stack of cards
                 if isActive && cards.count > 0 {
                     ZStack {
-                        ForEach(0..<cards.count, id: \.self) { index in
-                            CardView(card: cards[index]) { isCorrect in
+                        ForEach(cards) { card in
+                            let index = self.getCardIndex(card)
+                            
+                            CardView(card: card, shouldReset: retryMistakes) { isCorrect in
                                 if isCorrect {
                                     self.gameStats.correct += 1
                                     withAnimation {
-                                        self.removeCard(at: index)
+                                        self.removeCard(wasCorrect: true)
                                     }
                                 } else {
                                     self.gameStats.incorrect += 1
                                     withAnimation {
-                                        self.removeCard(at: index, wasCorrect: false)
+                                        self.removeCard(wasCorrect: false)
                                     }
                                 }
                             }
@@ -55,6 +57,7 @@ struct ContentView: View {
                         }
                     }
                     .allowsHitTesting(timeRemaining > 0)
+                    .padding(.top, 20)
                 }
                 
                 if !isActive {
@@ -136,8 +139,10 @@ struct ContentView: View {
                 
                 Spacer()
                 
-                AppLabel("Deck size: \(cards.count)")
-                    .font(.title2)
+                if cards.count > 0 {
+                    AppLabel("\(isActive ? "Cards remaining" : "Deck size"): \(cards.count)")
+                        .font(.title2)
+                }
             }
             
             VStack {
@@ -155,7 +160,7 @@ struct ContentView: View {
                     HStack {
                         AppButton(action: {
                             withAnimation {
-                                self.removeCard(at: cards.count - 1, wasCorrect: false)
+                                self.removeCard(wasCorrect: false)
                             }
                         }) {
                             Image(systemName: "xmark.circle")
@@ -167,7 +172,7 @@ struct ContentView: View {
                         
                         AppButton(action: {
                             withAnimation {
-                                self.removeCard(at: cards.count - 1)
+                                self.removeCard(wasCorrect: true)
                             }
                         }) {
                             Image(systemName: "checkmark.circle")
@@ -221,11 +226,8 @@ struct ContentView: View {
         _ = timer.connect()
     }
     
-    func removeCard(at index: Int, wasCorrect: Bool = true) {
-        guard index >= 0 else { return }
-        
-        let card = cards[index]
-        cards.remove(at: index)
+    func removeCard(wasCorrect: Bool) {
+        let card = cards.removeLast()
         
         if wasCorrect == false && retryMistakes {
             cards.insert(card, at: 0)
@@ -234,6 +236,10 @@ struct ContentView: View {
         if cards.isEmpty {
             isActive = false
         }
+    }
+    
+    func getCardIndex(_ card: Card) -> Int {
+        return cards.firstIndex { $0.id == card.id } ?? 0
     }
     
     func loadGame() {
